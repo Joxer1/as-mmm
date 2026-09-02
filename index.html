@@ -132,15 +132,12 @@ h1{
 
     backdrop-filter:blur(10px);
 
-    border:
-        1px solid
-        rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.15);
 
     border-radius:24px;
 
     box-shadow:
-        0 0 35px
-        rgba(255,0,120,.18);
+        0 0 35px rgba(255,0,120,.18);
 
     transition:.4s;
 
@@ -180,8 +177,7 @@ h1{
     transform:scale(1.04);
 
     box-shadow:
-        0 0 35px
-        rgba(255,105,180,.8);
+        0 0 35px rgba(255,105,180,.8);
 
 }
 
@@ -207,8 +203,7 @@ h1{
     padding:15px 18px;
 
     border-left:
-        3px solid
-        #ff5ea8;
+        3px solid #ff5ea8;
 
     background:
         rgba(255,255,255,.04);
@@ -251,16 +246,14 @@ h1{
 
     inset:0;
 
-    background:
-        rgba(0,0,0,.72);
+    background:rgba(0,0,0,.72);
 
-    backdrop-filter:
-        blur(18px);
+    backdrop-filter:blur(18px);
 
 }
 
 
-/* BÜYÜK FOTOĞRAF */
+/* FOTOĞRAF */
 
 .viewer-image{
 
@@ -268,13 +261,13 @@ h1{
 
     z-index:2;
 
-    width:auto;
-
-    height:auto;
-
     max-width:80vw;
 
     max-height:70vh;
+
+    width:auto;
+
+    height:auto;
 
     object-fit:contain;
 
@@ -297,15 +290,13 @@ h1{
 
 }
 
-
 @keyframes photoOpen{
 
     from{
 
         opacity:0;
 
-        transform:
-            scale(.65);
+        transform:scale(.65);
 
     }
 
@@ -313,15 +304,16 @@ h1{
 
         opacity:1;
 
-        transform:
-            scale(1);
+        transform:scale(1);
 
     }
 
 }
 
 
-/* KAPATMA */
+/* =========================
+   KAPATMA
+========================= */
 
 .close{
 
@@ -354,7 +346,7 @@ h1{
 
 
 /* =========================
-   AŞK MESAJI
+   FOTOĞRAFA ÖZEL AŞK SÖZÜ
 ========================= */
 
 .love-message{
@@ -374,7 +366,6 @@ h1{
 
 }
 
-
 .love-message h2{
 
     font-size:32px;
@@ -388,15 +379,15 @@ h1{
 
 }
 
-
 .love-message p{
 
     font-size:19px;
 
     line-height:1.7;
 
-}
+    color:#fff;
 
+}
 
 @keyframes messageIn{
 
@@ -404,8 +395,7 @@ h1{
 
         opacity:0;
 
-        transform:
-            translateY(25px);
+        transform:translateY(25px);
 
     }
 
@@ -413,8 +403,7 @@ h1{
 
         opacity:1;
 
-        transform:
-            translateY(0);
+        transform:translateY(0);
 
     }
 
@@ -439,7 +428,6 @@ h1{
         flyHeart 3s ease-out forwards;
 
 }
-
 
 @keyframes flyHeart{
 
@@ -481,27 +469,40 @@ h1{
 
     bottom:25px;
 
-    width:55px;
-
-    height:55px;
+    z-index:7000;
 
     border:none;
 
-    border-radius:50%;
+    border-radius:30px;
 
-    background:#ff4d9d;
+    padding:13px 20px;
+
+    background:
+        rgba(255,77,157,.92);
 
     color:white;
 
-    font-size:23px;
+    font-size:16px;
+
+    font-weight:bold;
 
     cursor:pointer;
-
-    z-index:7000;
 
     box-shadow:
         0 0 25px
         rgba(255,77,157,.7);
+
+    transition:.3s;
+
+}
+
+.music-button:hover{
+
+    transform:scale(1.07);
+
+    box-shadow:
+        0 0 35px
+        rgba(255,77,157,1);
 
 }
 
@@ -547,7 +548,7 @@ footer{
 
         max-width:88vw;
 
-        max-height:65vh;
+        max-height:60vh;
 
     }
 
@@ -560,6 +561,18 @@ footer{
     .love-message p{
 
         font-size:16px;
+
+    }
+
+    .music-button{
+
+        right:15px;
+
+        bottom:15px;
+
+        padding:11px 15px;
+
+        font-size:14px;
 
     }
 
@@ -613,6 +626,8 @@ footer{
             <img
                 src="e.jpg"
                 class="photo"
+                data-title="Seninle Her Şey Güzel ❤️"
+                data-message="Senin yanındayken zamanın nasıl geçtiğini anlamıyorum. Çünkü sen varken hayatın en güzel hâlini yaşıyorum."
             >
 
         </div>
@@ -623,6 +638,8 @@ footer{
             <img
                 src="e2.jpg"
                 class="photo"
+                data-title="Gülüşün Yeter 💗"
+                data-message="Bazen hiçbir şeye ihtiyacım olmadığını düşünüyorum. Sonra sen gülümsüyorsun ve nedenini anlıyorum."
             >
 
         </div>
@@ -633,6 +650,8 @@ footer{
             <img
                 src="e3.jpg"
                 class="photo"
+                data-title="Kalbimdeki Yerinin Tarifi Yok 💕"
+                data-message="Seni ne kadar sevdiğimi anlatmaya kelimeler yetmiyor. Çünkü bazı sevgiler anlatılmaz, sadece hissedilir."
             >
 
         </div>
@@ -643,6 +662,8 @@ footer{
             <img
                 src="e4.jpg"
                 class="photo"
+                data-title="İyi Ki Varsın Ecrin 💖"
+                data-message="Hayatımdaki en güzel şeylerden biri sen oldun. Ve eğer yeniden seçme şansım olsaydı, yine seni seçerdim."
             >
 
         </div>
@@ -652,7 +673,9 @@ footer{
 
 
 
-    <!-- AŞK NOTLARI -->
+    <!-- =========================
+         ALT NOTLAR
+    ========================= -->
 
     <div class="note">
 
@@ -692,14 +715,13 @@ footer{
 
 
 <!-- =========================
-     FOTOĞRAF TAM EKRAN
+     FOTOĞRAF AÇILMA EKRANI
 ========================= -->
 
 <div
     class="photo-viewer"
     id="viewer"
 >
-
 
     <div
         class="viewer-background"
@@ -723,20 +745,14 @@ footer{
 
     <div class="love-message">
 
-        <h2>
-            Ecrin... ❤
+        <h2 id="loveTitle">
+            Ecrin... ❤️
         </h2>
 
-        <p>
-            Sen benim hayatımda gördüğüm
-            en güzel tesadüfsün.
-            <br>
-            Kalbimin en güzel yerinde
-            hep sen varsın. ❤️
+        <p id="loveText">
         </p>
 
     </div>
-
 
 </div>
 
@@ -748,7 +764,6 @@ footer{
 
 <audio
     id="music"
-    autoplay
     loop
     preload="auto"
 >
@@ -768,7 +783,9 @@ footer{
     class="music-button"
     id="musicButton"
 >
-    🎵
+
+    🎵 Müziği Aç
+
 </button>
 
 
@@ -787,45 +804,53 @@ const musicButton =
     document.getElementById("musicButton");
 
 
-/* Otomatik başlatmayı dene */
+music.volume = 0.55;
 
-window.addEventListener(
-    "load",
+
+/* Kullanıcı sayfaya dokunursa
+   otomatik başlatmayı dene */
+
+document.addEventListener(
+    "click",
     () => {
 
-        music.volume = 0.55;
+        if(music.paused){
 
-        music.play().catch(() => {
+            music.play().then(() => {
 
-            console.log(
-                "Tarayıcı otomatik müziği engelledi."
-            );
+                musicButton.innerHTML =
+                    "🔊 Müziği Kapat";
 
-        });
+            }).catch(()=>{});
 
-    }
+        }
+
+    },
+    {once:true}
 );
 
 
-/* Buton */
+/* Müzik butonu */
 
 musicButton.addEventListener(
     "click",
-    () => {
+    (event) => {
+
+        event.stopPropagation();
 
         if(music.paused){
 
             music.play();
 
             musicButton.innerHTML =
-                "🔊";
+                "🔊 Müziği Kapat";
 
         }else{
 
             music.pause();
 
             musicButton.innerHTML =
-                "🎵";
+                "🎵 Müziği Aç";
 
         }
 
@@ -835,7 +860,7 @@ musicButton.addEventListener(
 
 
 /* =========================
-   FOTOĞRAF AÇMA
+   FOTOĞRAFLAR
 ========================= */
 
 const photos =
@@ -847,13 +872,26 @@ const viewer =
 const viewerImage =
     document.getElementById("viewerImage");
 
-const closeViewer =
-    document.getElementById("closeViewer");
-
 const viewerBackground =
     document.getElementById(
         "viewerBackground"
     );
+
+const closeViewer =
+    document.getElementById(
+        "closeViewer"
+    );
+
+const loveTitle =
+    document.getElementById(
+        "loveTitle"
+    );
+
+const loveText =
+    document.getElementById(
+        "loveText"
+    );
+
 
 
 photos.forEach(
@@ -861,10 +899,27 @@ photos.forEach(
 
         photo.addEventListener(
             "click",
-            () => {
+            (event) => {
+
+                event.stopPropagation();
+
+
+                /* FOTOĞRAFI GÖSTER */
 
                 viewerImage.src =
                     photo.src;
+
+
+                /* FOTOĞRAFA ÖZEL SÖZ */
+
+                loveTitle.textContent =
+                    photo.dataset.title;
+
+                loveText.textContent =
+                    photo.dataset.message;
+
+
+                /* EKRANI AÇ */
 
                 viewer.style.display =
                     "flex";
@@ -873,7 +928,7 @@ photos.forEach(
                     "hidden";
 
 
-                /* Kalpleri başlat */
+                /* KALPLER */
 
                 createHearts();
 
@@ -885,7 +940,9 @@ photos.forEach(
 
 
 
-/* KAPAT */
+/* =========================
+   KAPAT
+========================= */
 
 function closePhoto(){
 
@@ -910,15 +967,14 @@ viewerBackground.addEventListener(
 );
 
 
-/* ESC ile kapat */
+
+/* ESC */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(
-            event.key === "Escape"
-        ){
+        if(event.key === "Escape"){
 
             closePhoto();
 
@@ -937,7 +993,7 @@ function createHearts(){
 
     for(
         let i = 0;
-        i < 18;
+        i < 22;
         i++
     ){
 
@@ -949,12 +1005,19 @@ function createHearts(){
                         "div"
                     );
 
+
                 heart.className =
                     "flying-heart";
 
+
                 heart.innerHTML =
-                    ["❤","💗","💕","💖","💘"]
                     [
+                        "❤",
+                        "💗",
+                        "💕",
+                        "💖",
+                        "💘"
+                    ][
                         Math.floor(
                             Math.random()*5
                         )
@@ -970,8 +1033,8 @@ function createHearts(){
 
                 heart.style.bottom =
                     (
-                        15 +
-                        Math.random()*20
+                        10 +
+                        Math.random()*25
                     ) + "%";
 
 
@@ -1006,7 +1069,7 @@ function createHearts(){
 
 
             },
-            i * 120
+            i * 100
         );
 
     }
