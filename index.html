@@ -15,17 +15,39 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:Segoe UI,sans-serif;
+    font-family:"Segoe UI",Arial,sans-serif;
     background:#050816;
     color:white;
     overflow-x:hidden;
 }
 
+::selection{
+    background:#ff4d9d;
+    color:white;
+}
 
-/* =========================
-   AÇILIŞ SESLİ MESAJ
-========================= */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#050816;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff4d9d;
+    border-radius:20px;
+}
+
+
+/* ==================================================
+   AÇILIŞ
+================================================== */
 
 .intro{
     position:fixed;
@@ -49,21 +71,21 @@ body{
     background:
         radial-gradient(
             circle at center,
-            rgba(255,40,140,.25),
+            rgba(255,40,140,.28),
             transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(120,30,255,.15),
+            transparent 55%
         ),
         linear-gradient(
             rgba(0,0,0,.80),
-            rgba(5,0,15,.96)
+            rgba(5,0,15,.97)
         );
 
     filter:blur(4px);
 }
-
-
-/* =========================
-   AÇILIŞ YILDIZLARI
-========================= */
 
 .intro-stars{
     position:absolute;
@@ -72,7 +94,6 @@ body{
     z-index:1;
 
     pointer-events:none;
-
     overflow:hidden;
 }
 
@@ -83,7 +104,6 @@ body{
     height:2px;
 
     background:white;
-
     border-radius:50%;
 
     box-shadow:
@@ -91,7 +111,8 @@ body{
         0 0 12px rgba(255,120,190,.7);
 
     animation:
-        introStarTwinkle var(--duration) ease-in-out infinite;
+        introStarTwinkle var(--duration)
+        ease-in-out infinite;
 
     animation-delay:var(--delay);
 
@@ -112,53 +133,56 @@ body{
 
 }
 
-
-/* =========================
-   AÇILIŞ İÇERİK
-========================= */
-
 .intro-content{
     position:relative;
-
     z-index:2;
 
-    width:min(850px,90vw);
+    width:min(900px,90vw);
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
 }
 
 .intro-heart{
-    font-size:55px;
+    font-size:58px;
 
     color:#ff4d9d;
 
     text-shadow:
         0 0 20px #ff4d9d,
-        0 0 50px #ff2d88;
+        0 0 50px #ff2d88,
+        0 0 90px rgba(255,45,136,.5);
 
     animation:beat 1s infinite;
 
-    margin-bottom:35px;
+    margin-bottom:25px;
 }
 
+
+/* ==================================================
+   AÇILIŞ YAZILARI
+================================================== */
+
 .lyrics{
-    min-height:100px;
+    min-height:110px;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
     font-size:34px;
-
     line-height:1.5;
 
     font-weight:500;
 
-    color:rgba(255,255,255,.78);
+    color:rgba(255,255,255,.88);
 
     text-shadow:
-        0 0 12px rgba(255,100,180,.65);
+        0 0 12px rgba(255,100,180,.65),
+        0 0 35px rgba(255,50,150,.2);
 
     opacity:0;
 
@@ -171,45 +195,143 @@ body{
 
 .lyrics.show{
     opacity:1;
-
     transform:translateY(0);
 }
 
+.lyric-line{
+    display:block;
+    max-width:100%;
+}
+
+
+/* ==================================================
+   2. CÜMLE PARLAMA
+================================================== */
+
+.sweep-char{
+    color:rgba(255,255,255,.85);
+
+    text-shadow:
+        0 0 12px rgba(255,100,180,.45);
+
+    transition:
+        color .08s linear,
+        text-shadow .08s linear;
+}
+
+.sweep-char.active{
+    color:#ffffff;
+
+    text-shadow:
+        0 0 5px #ffffff,
+        0 0 12px #ffffff,
+        0 0 22px #ffb3d5,
+        0 0 38px #ff4d9d,
+        0 0 60px rgba(255,45,136,.9);
+}
+
+
+/* ==================================================
+   AÇILIŞ BUTONU
+================================================== */
+
+.intro-button{
+    margin-top:25px;
+
+    padding:15px 30px;
+
+    border:none;
+    border-radius:35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d9d,
+            #ff167d
+        );
+
+    color:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,77,157,.7),
+        0 0 45px rgba(255,30,130,.3);
+
+    transition:.3s;
+
+    animation:
+        buttonPulse 2s ease-in-out infinite;
+}
+
+.intro-button:hover{
+    transform:scale(1.08);
+
+    box-shadow:
+        0 0 30px rgba(255,77,157,1),
+        0 0 60px rgba(255,30,130,.5);
+}
+
+.intro-button:active{
+    transform:scale(.95);
+}
+
+@keyframes buttonPulse{
+
+    0%,100%{
+        box-shadow:
+            0 0 20px rgba(255,77,157,.7),
+            0 0 45px rgba(255,30,130,.3);
+    }
+
+    50%{
+        box-shadow:
+            0 0 30px rgba(255,77,157,1),
+            0 0 65px rgba(255,30,130,.5);
+    }
+
+}
+
+
+/* ==================================================
+   AÇILIŞ KAPANIŞ
+================================================== */
+
 .intro.hide{
-    animation:introOut 1s forwards;
+    animation:introOut 1.2s forwards;
 }
 
 @keyframes introOut{
 
     to{
         opacity:0;
-
         visibility:hidden;
     }
 
 }
 
 
-/* =========================
-   GİRİŞ / HERO
-========================= */
+/* ==================================================
+   HERO
+================================================== */
 
 .hero{
-    height:100vh;
+    min-height:100vh;
 
     position:relative;
-
     overflow:hidden;
 
     background:
         linear-gradient(
-            rgba(0,0,0,.45),
-            rgba(0,0,0,.70)
+            rgba(0,0,0,.38),
+            rgba(0,0,0,.72)
         ),
         url('b.jpg') center/cover;
 
     display:flex;
-
     align-items:center;
     justify-content:center;
 
@@ -217,24 +339,19 @@ body{
 }
 
 
-/* =========================
-   YILDIZ KATMANI
-========================= */
+/* ==================================================
+   YILDIZLAR
+================================================== */
 
 .stars{
     position:absolute;
-
     inset:0;
 
     z-index:1;
 
     pointer-events:none;
-
     overflow:hidden;
 }
-
-
-/* TEK YILDIZ */
 
 .star{
     position:absolute;
@@ -253,7 +370,8 @@ body{
     opacity:.25;
 
     animation:
-        twinkle var(--duration) ease-in-out infinite;
+        twinkle var(--duration)
+        ease-in-out infinite;
 
     animation-delay:var(--delay);
 }
@@ -273,35 +391,34 @@ body{
 }
 
 
-/* =========================
+/* ==================================================
    PEMBE SİS
-========================= */
+================================================== */
 
 .pink-mist{
     position:absolute;
 
     z-index:1;
 
-    width:650px;
-    height:400px;
+    width:700px;
+    height:450px;
 
     left:50%;
     top:50%;
 
-    transform:
-        translate(-50%,-50%);
+    transform:translate(-50%,-50%);
 
     background:
         radial-gradient(
             ellipse,
-            rgba(255,30,140,.28),
+            rgba(255,30,140,.30),
             rgba(255,0,120,.12) 35%,
             transparent 70%
         );
 
-    filter:blur(35px);
+    filter:blur(40px);
 
-    opacity:.75;
+    opacity:.8;
 
     animation:
         mistMove 7s ease-in-out infinite alternate;
@@ -326,9 +443,9 @@ body{
 }
 
 
-/* =========================
+/* ==================================================
    KAYAN YILDIZ
-========================= */
+================================================== */
 
 .shooting-star{
     position:absolute;
@@ -386,25 +503,38 @@ body{
 }
 
 
-/* =========================
+/* ==================================================
    HERO İÇERİK
-========================= */
+================================================== */
 
 .hero-content{
     position:relative;
-
     z-index:3;
 
     width:100%;
+    padding:20px;
 }
 
+.hero-small{
+    font-size:15px;
 
-/* BAŞLIK */
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    color:#ffd1e3;
+
+    margin-bottom:18px;
+
+    opacity:.9;
+}
 
 h1{
     position:relative;
 
-    font-size:68px;
+    font-size:clamp(45px,7vw,78px);
+
+    letter-spacing:4px;
 
     text-shadow:
         0 0 15px #ff4d9d,
@@ -414,9 +544,6 @@ h1{
     animation:
         glow 2s ease-in-out infinite alternate;
 }
-
-
-/* Başlığın arkasındaki ışık */
 
 h1::before{
     content:"";
@@ -449,12 +576,26 @@ h1::before{
 }
 
 .sub{
-    margin-top:16px;
+    margin-top:20px;
 
     font-size:22px;
 
+    color:rgba(255,255,255,.9);
+
     text-shadow:
         0 0 10px rgba(255,255,255,.5);
+}
+
+.hero-love{
+    margin-top:30px;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    color:#ffc0da;
+
+    opacity:.85;
 }
 
 .heart{
@@ -499,17 +640,109 @@ h1::before{
 }
 
 
-/* =========================
-   GALERİ
-========================= */
+/* ==================================================
+   AŞAĞI KAYDIR
+================================================== */
+
+.scroll-hint{
+    position:absolute;
+
+    bottom:28px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:4;
+
+    color:#ffd1e3;
+
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    opacity:.7;
+
+    animation:scrollHint 2s ease-in-out infinite;
+}
+
+.scroll-hint span{
+    display:block;
+
+    font-size:22px;
+
+    margin-top:6px;
+}
+
+@keyframes scrollHint{
+
+    0%,100%{
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(8px);
+    }
+
+}
+
+
+/* ==================================================
+   ANA ALAN
+================================================== */
 
 .wrap{
-    max-width:1200px;
+    max-width:1250px;
 
     margin:auto;
 
-    padding:70px 20px;
+    padding:100px 20px;
 }
+
+.section-intro{
+    text-align:center;
+
+    max-width:800px;
+
+    margin:0 auto 55px;
+}
+
+.section-label{
+    color:#ff7fb7;
+
+    font-size:13px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+}
+
+.section-title{
+    font-size:clamp(32px,5vw,50px);
+
+    margin-bottom:18px;
+
+    text-shadow:
+        0 0 25px rgba(255,70,160,.35);
+}
+
+.section-description{
+    color:rgba(255,255,255,.7);
+
+    font-size:18px;
+
+    line-height:1.8;
+}
+
+
+/* ==================================================
+   GALERİ
+================================================== */
 
 .gallery{
     display:flex;
@@ -518,9 +751,11 @@ h1::before{
 
     overflow-x:auto;
 
-    padding:20px 10px 35px;
+    padding:20px 10px 40px;
 
     scroll-behavior:smooth;
+
+    scrollbar-width:thin;
 }
 
 .gallery::-webkit-scrollbar{
@@ -533,43 +768,47 @@ h1::before{
     border-radius:20px;
 }
 
-
-/* FOTOĞRAF KARTI */
-
 .frame{
-    min-width:240px;
+    min-width:245px;
 
-    width:240px;
+    width:245px;
 
     padding:12px;
 
     background:
-        rgba(255,255,255,.06);
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.035)
+        );
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(14px);
 
     border:
         1px solid
-        rgba(255,255,255,.15);
+        rgba(255,255,255,.14);
 
-    border-radius:24px;
+    border-radius:26px;
 
     box-shadow:
         0 0 35px
-        rgba(255,0,120,.18);
+        rgba(255,0,120,.13);
 
-    transition:.4s;
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
 }
 
 .frame:hover{
 
     transform:
-        translateY(-10px)
-        scale(1.03);
+        translateY(-12px)
+        scale(1.025);
+
+    box-shadow:
+        0 18px 55px
+        rgba(255,0,120,.25);
 }
-
-
-/* KARE FOTOĞRAF */
 
 .photo{
     width:100%;
@@ -578,7 +817,7 @@ h1::before{
 
     object-fit:cover;
 
-    border-radius:18px;
+    border-radius:19px;
 
     display:block;
 
@@ -589,46 +828,288 @@ h1::before{
 
 .photo:hover{
 
-    transform:scale(1.04);
+    transform:scale(1.035);
 
     box-shadow:
         0 0 35px
         rgba(255,105,180,.8);
 }
 
+.photo-number{
+    text-align:center;
 
-/* =========================
-   NOTLAR
-========================= */
+    color:#ff9bc5;
 
-.note{
-    margin-top:40px;
+    font-size:12px;
+
+    letter-spacing:3px;
+
+    margin-top:12px;
+}
+
+
+/* ==================================================
+   AŞK MEKTUBU
+================================================== */
+
+.letter-section{
+    margin-top:100px;
+
+    padding:70px 25px;
+
+    position:relative;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,50,150,.08),
+            rgba(255,255,255,.025)
+        );
+
+    border:
+        1px solid
+        rgba(255,130,190,.12);
+
+    border-radius:35px;
+
+    box-shadow:
+        inset 0 0 80px rgba(255,0,120,.035),
+        0 20px 80px rgba(0,0,0,.25);
+
+    overflow:hidden;
+}
+
+.letter-section::before{
+    content:"❤";
+
+    position:absolute;
+
+    font-size:260px;
+
+    color:rgba(255,60,150,.025);
+
+    right:-30px;
+    bottom:-90px;
+
+    transform:rotate(-15deg);
+}
+
+.letter-content{
+    position:relative;
+    z-index:2;
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+.letter-title{
+    font-size:clamp(30px,5vw,48px);
+
+    margin-bottom:30px;
+
+    color:#ffd1e3;
+
+    text-shadow:
+        0 0 25px rgba(255,70,160,.4);
+}
+
+.letter-text{
+    color:rgba(255,255,255,.82);
+
+    font-size:18px;
+
+    line-height:2;
+
+    margin-bottom:20px;
+}
+
+.signature{
+    margin-top:35px;
+
+    color:#ff8fc0;
+
+    font-size:20px;
+
+    font-style:italic;
+}
+
+
+/* ==================================================
+   KÜÇÜK AŞK NOTLARI
+================================================== */
+
+.note-grid{
+    margin-top:70px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.note-card{
+    padding:30px 24px;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    transition:.4s;
+}
+
+.note-card:hover{
+
+    transform:translateY(-8px);
+
+    background:
+        rgba(255,50,150,.07);
+
+    border-color:
+        rgba(255,100,180,.25);
+}
+
+.note-icon{
+    font-size:35px;
+
+    margin-bottom:18px;
+}
+
+.note-card h3{
+    color:#ffd1e3;
+
+    margin-bottom:12px;
+
+    font-size:20px;
+}
+
+.note-card p{
+    color:rgba(255,255,255,.68);
+
+    line-height:1.7;
+
+    font-size:15px;
+}
+
+
+/* ==================================================
+   SON MESAJ
+================================================== */
+
+.final-section{
+    min-height:75vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:100px 20px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,35,145,.13),
+            transparent 55%
+        );
+}
+
+.final-content{
+    max-width:850px;
+
+    position:relative;
+    z-index:2;
+}
+
+.final-heart{
+    font-size:70px;
+
+    margin-bottom:25px;
+
+    animation:beat 1.2s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 25px
+            rgba(255,40,150,.9)
+        );
+}
+
+.final-title{
+    font-size:clamp(38px,7vw,72px);
+
+    margin-bottom:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffd1e3,
+            #ff65aa,
+            #ffd1e3
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    background-size:200%;
+
+    animation:gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove{
+
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:200%;
+    }
+
+}
+
+.final-text{
+    font-size:20px;
 
     line-height:1.9;
 
-    font-size:18px;
+    color:rgba(255,255,255,.75);
+
+    margin-bottom:35px;
 }
 
-.note p{
+.final-name{
+    font-size:25px;
 
-    margin:18px 0;
+    color:#ff9fc7;
 
-    padding:15px 18px;
-
-    border-left:
-        3px solid
-        #ff5ea8;
-
-    background:
-        rgba(255,255,255,.04);
-
-    border-radius:10px;
+    letter-spacing:3px;
 }
 
 
-/* =========================
-   FOTOĞRAF AÇILMA EKRANI
-========================= */
+/* ==================================================
+   FOTOĞRAF EKRANI
+================================================== */
 
 .photo-viewer{
 
@@ -649,9 +1130,6 @@ h1::before{
     padding:40px;
 }
 
-
-/* BULANIK ARKA PLAN */
-
 .viewer-background{
 
     position:absolute;
@@ -659,13 +1137,10 @@ h1::before{
     inset:0;
 
     background:
-        rgba(0,0,0,.72);
+        rgba(0,0,0,.78);
 
-    backdrop-filter:blur(18px);
+    backdrop-filter:blur(20px);
 }
-
-
-/* FOTOĞRAF */
 
 .viewer-image{
 
@@ -675,7 +1150,7 @@ h1::before{
 
     max-width:80vw;
 
-    max-height:70vh;
+    max-height:65vh;
 
     width:auto;
 
@@ -683,7 +1158,7 @@ h1::before{
 
     object-fit:contain;
 
-    border-radius:20px;
+    border-radius:22px;
 
     border:
         3px solid
@@ -719,17 +1194,11 @@ h1::before{
 
 }
 
-
-/* =========================
-   KAPATMA
-========================= */
-
 .close{
 
     position:absolute;
 
     top:25px;
-
     right:35px;
 
     z-index:10;
@@ -750,11 +1219,6 @@ h1::before{
     transform:scale(1.2);
 }
 
-
-/* =========================
-   FOTOĞRAFA ÖZEL AŞK SÖZÜ
-========================= */
-
 .love-message{
 
     position:relative;
@@ -765,7 +1229,9 @@ h1::before{
 
     text-align:center;
 
-    max-width:700px;
+    max-width:850px;
+
+    padding:0 10px;
 
     animation:
         messageIn .8s ease;
@@ -785,7 +1251,7 @@ h1::before{
 
 .love-message p{
 
-    font-size:19px;
+    font-size:18px;
 
     line-height:1.7;
 
@@ -811,9 +1277,9 @@ h1::before{
 }
 
 
-/* =========================
+/* ==================================================
    UÇAN KALPLER
-========================= */
+================================================== */
 
 .flying-heart{
 
@@ -855,16 +1321,15 @@ h1::before{
 }
 
 
-/* =========================
+/* ==================================================
    MÜZİK BUTONU
-========================= */
+================================================== */
 
 .music-button{
 
     position:fixed;
 
     right:25px;
-
     bottom:25px;
 
     z-index:7000;
@@ -903,45 +1368,79 @@ h1::before{
 }
 
 
-/* =========================
+/* ==================================================
    FOOTER
-========================= */
+================================================== */
 
 footer{
 
     text-align:center;
 
-    padding:40px;
+    padding:45px 20px;
 
     color:#ffd1e3;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.05);
+}
+
+.footer-heart{
+    color:#ff4d9d;
 }
 
 
-/* =========================
+/* ==================================================
    TELEFON
-========================= */
+================================================== */
+
+@media(max-width:800px){
+
+    .note-grid{
+        grid-template-columns:1fr;
+    }
+
+    .letter-section{
+        padding:50px 20px;
+    }
+
+}
 
 @media(max-width:600px){
 
     h1{
         font-size:42px;
+
+        letter-spacing:2px;
+    }
+
+    .hero-small{
+        font-size:11px;
+
+        letter-spacing:3px;
     }
 
     .sub{
         font-size:17px;
     }
 
-    .frame{
-        min-width:190px;
+    .hero-love{
+        font-size:13px;
+    }
 
-        width:190px;
+    .frame{
+        min-width:195px;
+        width:195px;
     }
 
     .viewer-image{
-
         max-width:88vw;
+        max-height:52vh;
+    }
 
-        max-height:60vh;
+    .love-message{
+        max-height:30vh;
+        overflow:auto;
     }
 
     .love-message h2{
@@ -949,13 +1448,13 @@ footer{
     }
 
     .love-message p{
-        font-size:16px;
+        font-size:15px;
+        line-height:1.55;
     }
 
     .music-button{
 
         right:15px;
-
         bottom:15px;
 
         padding:11px 15px;
@@ -965,10 +1464,18 @@ footer{
 
     .lyrics{
         font-size:23px;
+        min-height:90px;
     }
 
     .intro-heart{
         font-size:45px;
+    }
+
+    .intro-button{
+
+        font-size:16px;
+
+        padding:13px 25px;
     }
 
     .pink-mist{
@@ -980,12 +1487,29 @@ footer{
         filter:blur(30px);
     }
 
+    .wrap{
+        padding:70px 15px;
+    }
+
+    .section-description{
+        font-size:16px;
+    }
+
+    .letter-text{
+        font-size:16px;
+        line-height:1.8;
+    }
+
+    .final-text{
+        font-size:17px;
+    }
+
 }
 
 
-/* =========================
+/* ==================================================
    HAREKET AZALTMA
-========================= */
+================================================== */
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1010,9 +1534,9 @@ footer{
 <body>
 
 
-<!-- =========================
+<!-- ==================================================
      AÇILIŞ
-========================= -->
+================================================== -->
 
 <div
     class="intro"
@@ -1021,7 +1545,6 @@ footer{
 
     <div class="intro-bg"></div>
 
-    <!-- Açılış yıldızları -->
     <div
         class="intro-stars"
         id="introStars"
@@ -1034,25 +1557,36 @@ footer{
             ❤
         </div>
 
+
         <div
             class="lyrics"
             id="lyrics"
         >
-            Merhaba Ecrin...
+            Hazır mısın Ecrin? ❤️
         </div>
+
+
+        <button
+            class="intro-button"
+            id="introButton"
+        >
+            🎵 Sesi Oynat
+        </button>
 
     </div>
 
 </div>
 
 
-<!-- =========================
+
+<!-- ==================================================
      AÇILIŞ SESİ
-========================= -->
+================================================== -->
 
 <audio
     id="introAudio"
     preload="auto"
+    playsinline
 >
 
     <source
@@ -1064,14 +1598,11 @@ footer{
 
 
 
-<!-- =========================
-     GİRİŞ
-========================= -->
+<!-- ==================================================
+     HERO
+================================================== -->
 
 <section class="hero">
-
-
-    <!-- YILDIZLAR -->
 
     <div
         class="stars"
@@ -1079,16 +1610,14 @@ footer{
     ></div>
 
 
-    <!-- PEMBE SİS -->
+    <div class="pink-mist"></div>
 
-    <div
-        class="pink-mist"
-    ></div>
-
-
-    <!-- BAŞLIK -->
 
     <div class="hero-content">
+
+        <div class="hero-small">
+            Bir hikâyenin en güzel kısmı
+        </div>
 
         <div class="heart">
             ❤
@@ -1102,36 +1631,82 @@ footer{
             Bu sayfadaki her satır sana yazıldı.
         </p>
 
+        <p class="hero-love">
+            Çünkü bazı insanlar hayatımıza girmez... kalbimize yerleşir. ❤️
+        </p>
+
+    </div>
+
+
+    <div class="scroll-hint">
+
+        AŞAĞIDA SENİN İÇİN BİR ŞEYLER VAR
+
+        <span>↓</span>
+
     </div>
 
 </section>
 
 
 
-<!-- =========================
-     FOTOĞRAFLAR
-========================= -->
+<!-- ==================================================
+     GALERİ + İÇERİK
+================================================== -->
 
-<div class="wrap">
+<main class="wrap">
+
+
+    <div class="section-intro">
+
+        <div class="section-label">
+            Sana özel
+        </div>
+
+        <h2 class="section-title">
+            Birlikte Biriktirdiğimiz Güzel Şeyler ❤️
+        </h2>
+
+        <p class="section-description">
+            Her fotoğrafın arkasında başka bir an,
+            her anın içinde başka bir gülüşün var.
+            Bazı anları fotoğraflar saklar,
+            bazılarını ise kalp.
+        </p>
+
+    </div>
+
+
+
+    <!-- ==================================================
+         7 FOTOĞRAF
+    ================================================== -->
 
     <div class="gallery">
 
 
+        <!-- E1 -->
+
         <div class="frame">
 
             <img
-                src="e.jpg"
+                src="e1.jpg"
                 class="photo"
 
-                data-title=
-                "Seninle Her Şey Güzel ❤️"
+                data-title="Seninle Başlayan Hikâyem ❤️"
 
-                data-message=
-                "Senin yanındayken zamanın nasıl geçtiğini anlamıyorum. Çünkü sen varken hayatın en güzel hâlini yaşıyorum."
+                data-message="Bazen insanın hayatına birinin girmesiyle bazı şeylerin gerçekten değişebileceğine inanmazdım. Sonra sen geldin. Farkında bile olmadan en sıradan günlerimi güzelleştirdin. Seninle konuştuğum birkaç dakika bile bütün günümü değiştirebiliyor. Belki sana her zaman anlatamıyorum ama içimde sana karşı büyüyen bu sevgiyi her geçen gün daha fazla hissediyorum. İyi ki hayatımın bir yerinde yollarımız kesişmiş, iyi ki seni tanımışım ve iyi ki bu hikâyenin en güzel kısmında sen varsın."
             >
+
+            <div class="photo-number">
+                01 · HİKÂYEMİZ
+            </div>
 
         </div>
 
+
+
+        <!-- E2 -->
 
         <div class="frame">
 
@@ -1139,15 +1714,20 @@ footer{
                 src="e2.jpg"
                 class="photo"
 
-                data-title=
-                "Gülüşün Yeter 💗"
+                data-title="Gülüşünde Kayboluyorum 💗"
 
-                data-message=
-                "Bazen hiçbir şeye ihtiyacım olmadığını düşünüyorum. Sonra sen gülümsüyorsun ve nedenini anlıyorum."
+                data-message="Senin gülüşünde beni kendine çeken ve kelimelerle anlatamadığım bir şey var. En güzel anlarımın çoğunda aklıma senin yüzün ve o güzel gülüşün geliyor. Bazen bütün günün yorgunluğunu üzerimde hissederken seni görmek yetiyor; sanki içimdeki bütün ağırlık bir anda kayboluyor. Gülüşün benim için sadece güzel bir görüntü değil, kendimi en huzurlu hissettiğim yerlerden biri. Sen güldüğünde dünyanın biraz daha güzel olduğuna inanıyorum."
             >
+
+            <div class="photo-number">
+                02 · GÜLÜŞÜN
+            </div>
 
         </div>
 
+
+
+        <!-- E3 -->
 
         <div class="frame">
 
@@ -1155,15 +1735,20 @@ footer{
                 src="e3.jpg"
                 class="photo"
 
-                data-title=
-                "Kalbimdeki Yerinin Tarifi Yok 💕"
+                data-title="Kalbimin En Güzel Yeri 💕"
 
-                data-message=
-                "Seni ne kadar sevdiğimi anlatmaya kelimeler yetmiyor. Çünkü bazı sevgiler anlatılmaz, sadece hissedilir."
+                data-message="Kalbimde sana ayırdığım yerin neden bu kadar özel olduğunu kelimelerle anlatmak gerçekten zor. Çünkü sen benim için sadece sevdiğim bir insan değilsin. Mutluluğumu paylaşmak istediğim, kötü bir gün geçirdiğimde yanında huzur bulduğum ve güzel bir şey olduğunda ilk anlatmak istediğim kişisin. Sen hayatımda oldukça geleceğe dair kurduğum hayallerin içinde seni görmek bana ayrı bir mutluluk veriyor. Kalbimin en güzel köşesinde hep sana ait bir yer olacak."
             >
+
+            <div class="photo-number">
+                03 · KALBİM
+            </div>
 
         </div>
 
+
+
+        <!-- E4 -->
 
         <div class="frame">
 
@@ -1171,12 +1756,77 @@ footer{
                 src="e4.jpg"
                 class="photo"
 
-                data-title=
-                "İyi Ki Varsın Ecrin 💖"
+                data-title="İyi Ki Seni Tanımışım 💖"
 
-                data-message=
-                "Hayatımdaki en güzel şeylerden biri sen oldun. Ve eğer yeniden seçme şansım olsaydı, yine seni seçerdim."
+                data-message="Hayatımda verdiğim bazı kararları düşündüğümde, seni tanımış olmanın en güzel şeylerden biri olduğunu düşünüyorum. Seninle tanışmak, seni daha yakından tanımak ve zamanla sana böyle bağlanmak benim için tarifsiz bir duygu oldu. Her insanın hayatına gerçekten iz bırakan biri girmez. Sen benim hayatımda iz bırakmakla kalmadın, birçok güzel anımın sebebi oldun. İyi ki varsın Ecrin. İyi ki seni tanımışım. İyi ki yollarımız bir gün kesişmiş."
             >
+
+            <div class="photo-number">
+                04 · İYİ Kİ
+            </div>
+
+        </div>
+
+
+
+        <!-- E5 -->
+
+        <div class="frame">
+
+            <img
+                src="e5.jpg"
+                class="photo"
+
+                data-title="Sen Varken Dünya Daha Güzel 💘"
+
+                data-message="Sen yanımdayken sıradan görünen şeylerin bile bambaşka bir anlamı oluyor. Birlikte geçirdiğimiz birkaç saat, başkası için normal bir zaman olabilir ama benim için günün en güzel kısmına dönüşüyor. Seninle konuşmak, gülmek, bazen hiçbir şey yapmadan sadece aynı anda orada olmak bile bana yetiyor. Çünkü mesele ne yaptığımız değil; o anı seninle paylaşıyor olmam. Sen olduğunda en sıradan gün bile benim için hatırlamak isteyeceğim güzel bir anıya dönüşüyor."
+            >
+
+            <div class="photo-number">
+                05 · SENİNLE
+            </div>
+
+        </div>
+
+
+
+        <!-- E6 -->
+
+        <div class="frame">
+
+            <img
+                src="e6.jpg"
+                class="photo"
+
+                data-title="Seni Her Gün Biraz Daha Seviyorum ❤️"
+
+                data-message="Sana olan sevgimin zaman geçtikçe azalacağını değil, aksine seni tanıdıkça daha da büyüyeceğini hissediyorum. Her yeni konuşmamızda senin başka bir güzel yanını keşfediyorum ve sana hayran olduğum yeni bir şey buluyorum. Belki sevgimi her zaman kusursuz cümlelerle anlatamam ama kalbimin içinde bunun ne kadar büyük bir yer kapladığını biliyorum. Seni bugün sevdiğimden daha fazla seveceğim yarınların olması, bana dünyanın en güzel ihtimallerinden biri gibi geliyor."
+            >
+
+            <div class="photo-number">
+                06 · SEVGİM
+            </div>
+
+        </div>
+
+
+
+        <!-- E7 -->
+
+        <div class="frame">
+
+            <img
+                src="e7.jpg"
+                class="photo"
+
+                data-title="Hep Seni Seçeceğim... 💍❤️"
+
+                data-message="Hayat bana aynı yolu baştan yürüme ve bütün seçimlerimi yeniden yapma şansı verseydi, yine seni bulmanın bir yolunu arardım. Çünkü hayatımın karşıma çıkarabileceği bütün ihtimallerin arasında benim en güzel ihtimalim sen oldun. Yarın ne getirir, hayat bizi nerelere götürür bilmiyorum. Ama bildiğim bir şey var: Kalbim seni seçti ve ben bu seçimi her gün yeniden yapıyorum. Seni çok seviyorum Ecrin. Bugün, yarın ve kalbimdeki bu sevgi var olduğu sürece... hep sen."
+            >
+
+            <div class="photo-number">
+                07 · HEP SEN
+            </div>
 
         </div>
 
@@ -1185,50 +1835,200 @@ footer{
 
 
 
-    <!-- =========================
-         ALT NOTLAR
-    ========================= -->
+    <!-- ==================================================
+         AŞK MEKTUBU
+    ================================================== -->
 
-    <div class="note">
+    <section class="letter-section">
 
-        <p>
-            Senin gülüşün, en karanlık günlerimi bile
-            aydınlatan bir güneş gibi.
-        </p>
+        <div class="letter-content">
 
-        <p>
-            Yanında geçen küçücük bir an bile bana
-            saatlerce mutluluk veriyor.
-        </p>
+            <div class="section-label">
+                Sana söylemek istediklerim
+            </div>
 
-        <p>
-            Ne kadar zaman geçerse geçsin,
-            kalbimdeki yerin hep aynı kalacak.
-        </p>
+            <h2 class="letter-title">
+                Ecrin'e Küçük Bir Mektup 💌
+            </h2>
 
-        <p>
-            İyi ki varsın Ecrin...
-            Seni kelimelerin anlatabileceğinden
-            daha çok seviyorum. ❤
-        </p>
+            <p class="letter-text">
+                Ecrin...
+                Bazen bir insanı ne kadar sevdiğini anlatmak için
+                ne kadar çok kelime kullanırsan kullan yetmiyor.
+                Çünkü bazı duygular cümlelere sığmayacak kadar büyük oluyor.
+            </p>
+
+            <p class="letter-text">
+                Sen benim için sadece güzel anların değil,
+                güzel hislerin de adı oldun.
+                Seni düşündüğümde yüzümde istemsiz bir gülümseme oluşuyor.
+                Sesini duyduğumda içimde farklı bir huzur oluşuyor.
+                Seninle geçirdiğim zamanın neden bu kadar değerli olduğunu
+                bazen ben bile açıklayamıyorum.
+            </p>
+
+            <p class="letter-text">
+                Bildiğim tek şey şu:
+                Hayatımda seni tanımadan önce ve seni tanıdıktan sonra
+                diye iki farklı dönem var sanki.
+                Çünkü sen geldikten sonra bazı şeylere bakışım,
+                bazı şeylerden aldığım mutluluk ve kalbimdeki heyecan değişti.
+            </p>
+
+            <p class="letter-text">
+                Ben senden kusursuz olmanı istemiyorum.
+                Çünkü seni güzel yapan şey zaten olduğun kişi olman.
+                Gülüşünle, konuşmanla, bazen yaptığın küçük şeylerle,
+                bazen farkında bile olmadığın detaylarla
+                seni olduğun gibi seviyorum.
+            </p>
+
+            <p class="letter-text">
+                Ve eğer bir gün bu siteyi tekrar açıp bakarsan,
+                burada gördüğün her şeyin sadece bir web sitesi olmadığını hatırla.
+                Bunların her biri sana söylemek istediğim
+                ama bazen kelimelere dökemediğim şeylerin küçük bir parçası.
+            </p>
+
+            <div class="signature">
+                Seni çok seven biri... ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==================================================
+         KÜÇÜK NOTLAR
+    ================================================== -->
+
+    <div class="note-grid">
+
+
+        <div class="note-card">
+
+            <div class="note-icon">
+                🌙
+            </div>
+
+            <h3>Gece Gibi Huzur</h3>
+
+            <p>
+                Bazen sadece seninle konuşmak bile
+                bütün günün karmaşasını susturmaya yetiyor.
+            </p>
+
+        </div>
+
+
+
+        <div class="note-card">
+
+            <div class="note-icon">
+                🌹
+            </div>
+
+            <h3>En Güzel Tesadüf</h3>
+
+            <p>
+                Hayatımda karşıma çıkabilecek
+                en güzel tesadüflerden biri sen oldun.
+            </p>
+
+        </div>
+
+
+
+        <div class="note-card">
+
+            <div class="note-icon">
+                ♾️
+            </div>
+
+            <h3>Bir Gün Daha</h3>
+
+            <p>
+                Seninle geçireceğim bir günün daha olması,
+                benim için her zaman en güzel hediyelerden biri.
+            </p>
+
+        </div>
+
 
     </div>
 
-</div>
+</main>
 
 
+
+<!-- ==================================================
+     FİNAL
+================================================== -->
+
+<section class="final-section">
+
+    <div class="final-content">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h2 class="final-title">
+            Seni Seviyorum Ecrin
+        </h2>
+
+        <p class="final-text">
+            Belki bu sayfa hiçbir zaman sana olan sevgimi
+            tamamen anlatmaya yetmeyecek.
+            Ama yine de her kelimesini,
+            her fotoğrafını ve her küçük detayını
+            seni düşünerek hazırladım.
+
+            <br><br>
+
+            Çünkü sen benim için sıradan biri değilsin.
+            Sen, kalbimde ayrı bir yeri olan,
+            yüzünü gördüğümde içimi güzelleştiren
+            ve hayatımda olduğu için kendimi şanslı hissettiğim
+            insansın.
+
+            <br><br>
+
+            İyi ki varsın.
+            İyi ki benim hayatımdasın.
+        </p>
+
+        <div class="final-name">
+            ECRİN ❤️
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
 
 <footer>
 
-    ❤ Sonsuza kadar kalbimde ❤
+    <span class="footer-heart">❤</span>
+
+    Diyar'dan Ecrin'e, kalbinin en güzel yerine...
+
+    <span class="footer-heart">❤</span>
 
 </footer>
 
 
 
-<!-- =========================
-     FOTOĞRAF AÇILMA EKRANI
-========================= -->
+<!-- ==================================================
+     FOTOĞRAF GÖRÜNTÜLEYİCİ
+================================================== -->
 
 <div
     class="photo-viewer"
@@ -1258,8 +2058,7 @@ footer{
             Ecrin... ❤️
         </h2>
 
-        <p id="loveText">
-        </p>
+        <p id="loveText"></p>
 
     </div>
 
@@ -1267,9 +2066,9 @@ footer{
 
 
 
-<!-- =========================
-     MÜZİK
-========================= -->
+<!-- ==================================================
+     ARKA PLAN MÜZİĞİ
+================================================== -->
 
 <audio
     id="music"
@@ -1283,6 +2082,7 @@ footer{
     >
 
 </audio>
+
 
 
 <button
@@ -1300,7 +2100,7 @@ footer{
 
 
 /* ==================================================
-   YILDIZ OLUŞTURMA
+   YILDIZLAR
 ================================================== */
 
 const stars =
@@ -1309,10 +2109,6 @@ const stars =
 const introStars =
     document.getElementById("introStars");
 
-
-/* ==================================================
-   ANA SAYFA YILDIZLARI
-================================================== */
 
 function createStars(){
 
@@ -1331,14 +2127,11 @@ function createStars(){
         const star =
             document.createElement("div");
 
-
         star.className =
             "star";
 
-
         star.style.left =
             Math.random() * 100 + "%";
-
 
         star.style.top =
             Math.random() * 100 + "%";
@@ -1351,7 +2144,6 @@ function createStars(){
         star.style.width =
             size + "px";
 
-
         star.style.height =
             size + "px";
 
@@ -1361,25 +2153,18 @@ function createStars(){
             (2 + Math.random() * 4) + "s"
         );
 
-
         star.style.setProperty(
             "--delay",
             (Math.random() * 5) + "s"
         );
 
 
-        stars.appendChild(
-            star
-        );
+        stars.appendChild(star);
 
     }
 
 }
 
-
-/* ==================================================
-   AÇILIŞ YILDIZLARI
-================================================== */
 
 function createIntroStars(){
 
@@ -1398,14 +2183,11 @@ function createIntroStars(){
         const star =
             document.createElement("div");
 
-
         star.className =
             "intro-star";
 
-
         star.style.left =
             Math.random() * 100 + "%";
-
 
         star.style.top =
             Math.random() * 100 + "%";
@@ -1418,7 +2200,6 @@ function createIntroStars(){
         star.style.width =
             size + "px";
 
-
         star.style.height =
             size + "px";
 
@@ -1428,16 +2209,13 @@ function createIntroStars(){
             (2 + Math.random() * 4) + "s"
         );
 
-
         star.style.setProperty(
             "--delay",
             (Math.random() * 5) + "s"
         );
 
 
-        introStars.appendChild(
-            star
-        );
+        introStars.appendChild(star);
 
     }
 
@@ -1451,7 +2229,7 @@ createIntroStars();
 
 
 /* ==================================================
-   KAYAN YILDIZLAR
+   KAYAN YILDIZ
 ================================================== */
 
 function createShootingStar(){
@@ -1477,9 +2255,9 @@ function createShootingStar(){
         ) + "%";
 
 
-    document
-        .getElementById("stars")
-        .appendChild(shooting);
+    stars.appendChild(
+        shooting
+    );
 
 
     setTimeout(
@@ -1494,15 +2272,11 @@ function createShootingStar(){
 }
 
 
-/* İlk kayan yıldız */
-
 setTimeout(
     createShootingStar,
     3000
 );
 
-
-/* Daha sonra rastgele */
 
 setInterval(
     () => {
@@ -1522,7 +2296,7 @@ setInterval(
 
 
 /* ==================================================
-   AÇILIŞ SESLİ MESAJ
+   AÇILIŞ
 ================================================== */
 
 const intro =
@@ -1534,10 +2308,29 @@ const introAudio =
 const lyrics =
     document.getElementById("lyrics");
 
+const introButton =
+    document.getElementById("introButton");
+
+
+let introStarted =
+    false;
+
+let introFinished =
+    false;
+
+let currentLineIndex =
+    -1;
+
+let sweepChars =
+    [];
+
+let sweepFrame =
+    null;
+
+
 
 /* ==================================================
    AÇILIŞ YAZILARI
-   2 SANİYE ERKENE ÇEKİLDİ
 ================================================== */
 
 const introLines = [
@@ -1582,10 +2375,135 @@ const introLines = [
 
 
 /* ==================================================
+   METİN OLUŞTUR
+================================================== */
+
+function renderLine(index){
+
+    lyrics.innerHTML = "";
+
+    sweepChars = [];
+
+
+    const line =
+        document.createElement("div");
+
+    line.className =
+        "lyric-line";
+
+
+    const text =
+        introLines[index].text;
+
+
+    if(index === 1){
+
+        let characters;
+
+
+        if(
+            window.Intl &&
+            Intl.Segmenter
+        ){
+
+            const segmenter =
+                new Intl.Segmenter(
+                    "tr",
+                    {
+                        granularity:
+                            "grapheme"
+                    }
+                );
+
+
+            characters =
+                [
+                    ...segmenter.segment(text)
+                ].map(
+                    item =>
+                        item.segment
+                );
+
+        }else{
+
+            characters =
+                Array.from(text);
+
+        }
+
+
+        characters.forEach(
+            character => {
+
+                const span =
+                    document.createElement(
+                        "span"
+                    );
+
+
+                span.className =
+                    "sweep-char";
+
+
+                span.textContent =
+                    character === " "
+                        ? "\u00A0"
+                        : character;
+
+
+                line.appendChild(
+                    span
+                );
+
+
+                if(
+                    character !== " "
+                ){
+
+                    sweepChars.push(
+                        span
+                    );
+
+                }
+
+            }
+        );
+
+    }else{
+
+        line.textContent =
+            text;
+
+    }
+
+
+    lyrics.appendChild(
+        line
+    );
+
+}
+
+
+
+/* ==================================================
    YAZI GÖSTER
 ================================================== */
 
-function showLine(text){
+function showLine(index){
+
+    if(
+        index === currentLineIndex &&
+        lyrics.classList.contains("show")
+    ){
+
+        return;
+
+    }
+
+
+    currentLineIndex =
+        index;
+
 
     lyrics.classList.remove(
         "show"
@@ -1595,15 +2513,27 @@ function showLine(text){
     setTimeout(
         () => {
 
-            lyrics.textContent =
-                text;
+            if(
+                introFinished
+            ){
+
+                return;
+
+            }
+
+
+            renderLine(
+                index
+            );
+
 
             lyrics.classList.add(
                 "show"
             );
 
+
         },
-        250
+        220
     );
 
 }
@@ -1611,41 +2541,185 @@ function showLine(text){
 
 
 /* ==================================================
-   AÇILIŞI BAŞLAT
+   PARLAMA
 ================================================== */
 
-function startIntroMessage(){
+function updateSweep(currentTime){
 
-    introAudio.currentTime =
+    if(
+        currentLineIndex !== 1 ||
+        sweepChars.length === 0
+    ){
+
+        return;
+
+    }
+
+
+    const lineStart =
+        introLines[1].time;
+
+
+    const elapsed =
+        currentTime - lineStart;
+
+
+    if(
+        elapsed < 2
+    ){
+
+        sweepChars.forEach(
+            char => {
+
+                char.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+        return;
+
+    }
+
+
+    const sweepDuration =
+        2;
+
+
+    let progress =
+        (
+            elapsed - 2
+        ) / sweepDuration;
+
+
+    progress =
+        Math.max(
+            0,
+            Math.min(
+                .999999,
+                progress
+            )
+        );
+
+
+    const activeIndex =
+        Math.min(
+            sweepChars.length - 1,
+            Math.floor(
+                progress *
+                sweepChars.length
+            )
+        );
+
+
+    sweepChars.forEach(
+        (char,index) => {
+
+            char.classList.toggle(
+                "active",
+                index === activeIndex
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   PARLAMA DÖNGÜSÜ
+================================================== */
+
+function startSweepLoop(){
+
+    if(
+        sweepFrame !== null
+    ){
+
+        return;
+
+    }
+
+
+    function loop(){
+
+        if(
+            !introStarted ||
+            introFinished
+        ){
+
+            sweepFrame =
+                null;
+
+            return;
+
+        }
+
+
+        updateSweep(
+            introAudio.currentTime
+        );
+
+
+        sweepFrame =
+            requestAnimationFrame(
+                loop
+            );
+
+    }
+
+
+    loop();
+
+}
+
+
+
+/* ==================================================
+   SES SENKRONU
+================================================== */
+
+function syncLyrics(currentTime){
+
+    let activeIndex =
         0;
 
 
-    introAudio.play().then(
+    for(
+        let i = 0;
+        i < introLines.length;
+        i++
+    ){
 
-        () => {
+        if(
+            currentTime >=
+            introLines[i].time
+        ){
 
-            console.log(
-                "Açılış sesi başladı."
-            );
-
-        }
-
-    ).catch(
-
-        () => {
-
-            /*
-            Tarayıcı otomatik ses
-            oynatmayı engellerse
-            konsola bilgi veriyoruz.
-            */
-
-            console.log(
-                "Tarayıcı otomatik sesi engelledi."
-            );
+            activeIndex =
+                i;
 
         }
 
+    }
+
+
+    if(
+        activeIndex !==
+        currentLineIndex
+    ){
+
+        showLine(
+            activeIndex
+        );
+
+    }
+
+
+    updateSweep(
+        currentTime
     );
 
 }
@@ -1653,20 +2727,102 @@ function startIntroMessage(){
 
 
 /* ==================================================
-   SAYFA AÇILINCA OTOMATİK BAŞLAT
+   İLK YAZI
 ================================================== */
 
-window.addEventListener(
-    "load",
+renderLine(0);
+
+lyrics.classList.add("show");
+
+
+
+/* ==================================================
+   SESİ OYNAT
+================================================== */
+
+introButton.addEventListener(
+    "click",
     () => {
 
-        setTimeout(
-            () => {
+        if(
+            introStarted
+        ){
 
-                startIntroMessage();
+            return;
 
-            },
-            500
+        }
+
+
+        introStarted =
+            true;
+
+
+        introButton.style.display =
+            "none";
+
+
+        introAudio.currentTime =
+            0;
+
+
+        currentLineIndex =
+            -1;
+
+
+        sweepChars =
+            [];
+
+
+        showLine(0);
+
+
+        const playPromise =
+            introAudio.play();
+
+
+        if(
+            playPromise !== undefined
+        ){
+
+            playPromise.catch(
+                () => {
+
+                    introStarted =
+                        false;
+
+
+                    introButton.style.display =
+                        "block";
+
+                }
+            );
+
+        }
+
+    }
+);
+
+
+
+/* ==================================================
+   SES + YAZI
+================================================== */
+
+introAudio.addEventListener(
+    "timeupdate",
+    () => {
+
+        if(
+            !introStarted
+        ){
+
+            return;
+
+        }
+
+
+        syncLyrics(
+            introAudio.currentTime
         );
 
     }
@@ -1675,50 +2831,28 @@ window.addEventListener(
 
 
 /* ==================================================
-   SES + YAZI SENKRONU
+   SES BAŞLADI
 ================================================== */
 
 introAudio.addEventListener(
-    "timeupdate",
+    "playing",
     () => {
 
-        const current =
-            introAudio.currentTime;
-
-
-        let activeLine =
-            introLines[0];
-
-
-        for(
-            let i = 0;
-            i < introLines.length;
-            i++
-        ){
-
-            if(
-                current >=
-                introLines[i].time
-            ){
-
-                activeLine =
-                    introLines[i];
-
-            }
-
-        }
-
-
         if(
-            lyrics.textContent !==
-            activeLine.text
+            !introStarted
         ){
 
-            showLine(
-                activeLine.text
-            );
+            return;
 
         }
+
+
+        syncLyrics(
+            introAudio.currentTime
+        );
+
+
+        startSweepLoop();
 
     }
 );
@@ -1726,12 +2860,39 @@ introAudio.addEventListener(
 
 
 /* ==================================================
-   SES BİTİNCE ANA SİTEYİ AÇ
+   SES BİTTİ
 ================================================== */
 
 introAudio.addEventListener(
     "ended",
     () => {
+
+        if(
+            introFinished
+        ){
+
+            return;
+
+        }
+
+
+        introFinished =
+            true;
+
+
+        if(
+            sweepFrame !== null
+        ){
+
+            cancelAnimationFrame(
+                sweepFrame
+            );
+
+            sweepFrame =
+                null;
+
+        }
+
 
         lyrics.classList.remove(
             "show"
@@ -1753,15 +2914,10 @@ introAudio.addEventListener(
                             "none";
 
 
-                        /*
-                        Açılış bittikten sonra
-                        arka plan müziğini başlat
-                        */
-
                         startBackgroundMusic();
 
                     },
-                    1000
+                    1200
                 );
 
             },
@@ -1786,7 +2942,6 @@ const musicButton =
 
 music.volume =
     0.55;
-
 
 
 function startBackgroundMusic(){
@@ -1977,7 +3132,9 @@ viewerBackground.addEventListener(
 
 
 
-/* ESC */
+/* ==================================================
+   ESC
+================================================== */
 
 document.addEventListener(
     "keydown",
