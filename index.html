@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="tr">
 
@@ -25,63 +24,281 @@ body{
 
 
 /* =========================
+   AÇILIŞ SESLİ MESAJ
+========================= */
+
+.intro{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    overflow:hidden;
+
+    background:#03030b;
+
+}
+
+
+.intro-bg{
+
+    position:absolute;
+
+    inset:-30px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(255,40,140,.25),
+            transparent 45%
+        ),
+
+        linear-gradient(
+            rgba(0,0,0,.80),
+            rgba(5,0,15,.96)
+        );
+
+    filter:blur(4px);
+
+}
+
+
+.intro-content{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(850px,90vw);
+
+}
+
+
+.intro-heart{
+
+    font-size:55px;
+
+    color:#ff4d9d;
+
+    text-shadow:
+
+        0 0 20px #ff4d9d,
+
+        0 0 50px #ff2d88;
+
+    animation:beat 1s infinite;
+
+    margin-bottom:35px;
+
+}
+
+
+.lyrics{
+
+    min-height:100px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    font-size:34px;
+
+    line-height:1.5;
+
+    font-weight:500;
+
+    color:rgba(255,255,255,.78);
+
+    text-shadow:
+        0 0 12px rgba(255,100,180,.65);
+
+    opacity:0;
+
+    transform:translateY(15px);
+
+    transition:
+        opacity .5s ease,
+        transform .5s ease;
+
+}
+
+
+.lyrics.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+
+.start-intro{
+
+    margin-top:35px;
+
+    padding:14px 28px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,77,157,.9);
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,77,157,.65);
+
+    transition:.3s;
+
+}
+
+
+.start-intro:hover{
+
+    transform:scale(1.06);
+
+    box-shadow:
+        0 0 40px
+        rgba(255,77,157,.9);
+
+}
+
+
+.intro.hide{
+
+    animation:
+        introOut 1s forwards;
+
+}
+
+
+@keyframes introOut{
+
+    to{
+
+        opacity:0;
+
+        visibility:hidden;
+
+    }
+
+}
+
+
+
+/* =========================
    GİRİŞ
 ========================= */
 
 .hero{
+
     height:100vh;
 
     background:
+
         linear-gradient(
             rgba(0,0,0,.45),
             rgba(0,0,0,.70)
         ),
+
         url('b.jpg') center/cover;
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     text-align:center;
+
 }
 
+
 h1{
+
     font-size:68px;
 
     text-shadow:
+
         0 0 15px #ff4d9d,
+
         0 0 35px #ff2d88;
 
-    animation:glow 2s ease-in-out infinite alternate;
+    animation:
+        glow 2s ease-in-out infinite alternate;
+
 }
+
 
 .sub{
+
     margin-top:16px;
+
     font-size:22px;
+
 }
 
+
 .heart{
+
     font-size:45px;
-    animation:beat 1s infinite;
+
+    animation:
+        beat 1s infinite;
+
 }
+
 
 @keyframes beat{
 
     50%{
+
         transform:scale(1.3);
+
     }
 
 }
 
+
 @keyframes glow{
 
     from{
-        text-shadow:0 0 10px #ff5ea8;
+
+        text-shadow:
+            0 0 10px #ff5ea8;
+
     }
 
     to{
+
         text-shadow:
+
             0 0 20px #ff2d88,
+
             0 0 45px #ff2d88;
+
     }
 
 }
@@ -92,14 +309,20 @@ h1{
 ========================= */
 
 .wrap{
+
     max-width:1200px;
+
     margin:auto;
+
     padding:70px 20px;
+
 }
+
 
 .gallery{
 
     display:flex;
+
     gap:25px;
 
     overflow-x:auto;
@@ -107,15 +330,23 @@ h1{
     padding:20px 10px 35px;
 
     scroll-behavior:smooth;
+
 }
+
 
 .gallery::-webkit-scrollbar{
+
     height:8px;
+
 }
 
+
 .gallery::-webkit-scrollbar-thumb{
+
     background:#ff5ea8;
+
     border-radius:20px;
+
 }
 
 
@@ -124,24 +355,30 @@ h1{
 .frame{
 
     min-width:240px;
+
     width:240px;
 
     padding:12px;
 
-    background:rgba(255,255,255,.06);
+    background:
+        rgba(255,255,255,.06);
 
     backdrop-filter:blur(10px);
 
-    border:1px solid rgba(255,255,255,.15);
+    border:
+        1px solid
+        rgba(255,255,255,.15);
 
     border-radius:24px;
 
     box-shadow:
-        0 0 35px rgba(255,0,120,.18);
+        0 0 35px
+        rgba(255,0,120,.18);
 
     transition:.4s;
 
 }
+
 
 .frame:hover{
 
@@ -172,12 +409,14 @@ h1{
 
 }
 
+
 .photo:hover{
 
     transform:scale(1.04);
 
     box-shadow:
-        0 0 35px rgba(255,105,180,.8);
+        0 0 35px
+        rgba(255,105,180,.8);
 
 }
 
@@ -196,6 +435,7 @@ h1{
 
 }
 
+
 .note p{
 
     margin:18px 0;
@@ -203,7 +443,8 @@ h1{
     padding:15px 18px;
 
     border-left:
-        3px solid #ff5ea8;
+        3px solid
+        #ff5ea8;
 
     background:
         rgba(255,255,255,.04);
@@ -246,7 +487,8 @@ h1{
 
     inset:0;
 
-    background:rgba(0,0,0,.72);
+    background:
+        rgba(0,0,0,.72);
 
     backdrop-filter:blur(18px);
 
@@ -289,6 +531,7 @@ h1{
         photoOpen .5s ease;
 
 }
+
 
 @keyframes photoOpen{
 
@@ -338,6 +581,7 @@ h1{
 
 }
 
+
 .close:hover{
 
     transform:scale(1.2);
@@ -366,6 +610,7 @@ h1{
 
 }
 
+
 .love-message h2{
 
     font-size:32px;
@@ -379,6 +624,7 @@ h1{
 
 }
 
+
 .love-message p{
 
     font-size:19px;
@@ -388,6 +634,7 @@ h1{
     color:#fff;
 
 }
+
 
 @keyframes messageIn{
 
@@ -428,6 +675,7 @@ h1{
         flyHeart 3s ease-out forwards;
 
 }
+
 
 @keyframes flyHeart{
 
@@ -496,6 +744,7 @@ h1{
 
 }
 
+
 .music-button:hover{
 
     transform:scale(1.07);
@@ -529,12 +778,18 @@ footer{
 @media(max-width:600px){
 
     h1{
+
         font-size:42px;
+
     }
 
+
     .sub{
+
         font-size:17px;
+
     }
+
 
     .frame{
 
@@ -544,6 +799,7 @@ footer{
 
     }
 
+
     .viewer-image{
 
         max-width:88vw;
@@ -552,17 +808,20 @@ footer{
 
     }
 
+
     .love-message h2{
 
         font-size:25px;
 
     }
 
+
     .love-message p{
 
         font-size:16px;
 
     }
+
 
     .music-button{
 
@@ -576,6 +835,20 @@ footer{
 
     }
 
+
+    .lyrics{
+
+        font-size:23px;
+
+    }
+
+
+    .intro-heart{
+
+        font-size:45px;
+
+    }
+
 }
 
 </style>
@@ -584,6 +857,61 @@ footer{
 
 
 <body>
+
+
+<!-- =========================
+     AÇILIŞ SESLİ MESAJ
+========================= -->
+
+<div
+    class="intro"
+    id="intro"
+>
+
+    <div class="intro-bg"></div>
+
+
+    <div class="intro-content">
+
+        <div class="intro-heart">
+            ❤
+        </div>
+
+
+        <div
+            class="lyrics"
+            id="lyrics"
+        >
+            Merhaba Ecrin...
+        </div>
+
+
+        <button
+            class="start-intro"
+            id="startIntro"
+        >
+            🔊 Açılış Mesajını Dinle
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- AÇILIŞ SES DOSYASI -->
+
+<audio
+    id="introAudio"
+    preload="auto"
+>
+
+    <source
+        src="acilis.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
 
 
 <!-- =========================
@@ -626,8 +954,12 @@ footer{
             <img
                 src="e.jpg"
                 class="photo"
-                data-title="Seninle Her Şey Güzel ❤️"
-                data-message="Senin yanındayken zamanın nasıl geçtiğini anlamıyorum. Çünkü sen varken hayatın en güzel hâlini yaşıyorum."
+
+                data-title=
+                "Seninle Her Şey Güzel ❤️"
+
+                data-message=
+                "Senin yanındayken zamanın nasıl geçtiğini anlamıyorum. Çünkü sen varken hayatın en güzel hâlini yaşıyorum."
             >
 
         </div>
@@ -638,8 +970,12 @@ footer{
             <img
                 src="e2.jpg"
                 class="photo"
-                data-title="Gülüşün Yeter 💗"
-                data-message="Bazen hiçbir şeye ihtiyacım olmadığını düşünüyorum. Sonra sen gülümsüyorsun ve nedenini anlıyorum."
+
+                data-title=
+                "Gülüşün Yeter 💗"
+
+                data-message=
+                "Bazen hiçbir şeye ihtiyacım olmadığını düşünüyorum. Sonra sen gülümsüyorsun ve nedenini anlıyorum."
             >
 
         </div>
@@ -650,8 +986,12 @@ footer{
             <img
                 src="e3.jpg"
                 class="photo"
-                data-title="Kalbimdeki Yerinin Tarifi Yok 💕"
-                data-message="Seni ne kadar sevdiğimi anlatmaya kelimeler yetmiyor. Çünkü bazı sevgiler anlatılmaz, sadece hissedilir."
+
+                data-title=
+                "Kalbimdeki Yerinin Tarifi Yok 💕"
+
+                data-message=
+                "Seni ne kadar sevdiğimi anlatmaya kelimeler yetmiyor. Çünkü bazı sevgiler anlatılmaz, sadece hissedilir."
             >
 
         </div>
@@ -662,8 +1002,12 @@ footer{
             <img
                 src="e4.jpg"
                 class="photo"
-                data-title="İyi Ki Varsın Ecrin 💖"
-                data-message="Hayatımdaki en güzel şeylerden biri sen oldun. Ve eğer yeniden seçme şansım olsaydı, yine seni seçerdim."
+
+                data-title=
+                "İyi Ki Varsın Ecrin 💖"
+
+                data-message=
+                "Hayatımdaki en güzel şeylerden biri sen oldun. Ve eğer yeniden seçme şansım olsaydı, yine seni seçerdim."
             >
 
         </div>
@@ -776,9 +1120,6 @@ footer{
 </audio>
 
 
-
-<!-- MÜZİK BUTONU -->
-
 <button
     class="music-button"
     id="musicButton"
@@ -793,9 +1134,250 @@ footer{
 <script>
 
 
-/* =========================
-   MÜZİK
-========================= */
+/* ==================================================
+   AÇILIŞ SESLİ MESAJ
+================================================== */
+
+const intro =
+    document.getElementById("intro");
+
+const introAudio =
+    document.getElementById("introAudio");
+
+const lyrics =
+    document.getElementById("lyrics");
+
+const startIntro =
+    document.getElementById("startIntro");
+
+
+/*
+==================================================
+SESLE EŞLEŞECEK YAZILAR
+
+time = saniye
+
+ÖRNEK:
+
+0 saniye  → Merhaba Ecrin
+3 saniye  → Bu sitede...
+7 saniye  → Burada...
+==================================================
+*/
+
+const introLines = [
+
+    {
+        time:0,
+        text:"Merhaba Ecrin..."
+    },
+
+    {
+        time:3,
+        text:"Bu sitede sana olan aşkımı ilan ediyorum. ❤️"
+    },
+
+    {
+        time:7,
+        text:"Burada gördüğün her şey senin için hazırlandı."
+    },
+
+    {
+        time:11,
+        text:"Şimdi arkana yaslan..."
+    },
+
+    {
+        time:14,
+        text:"Ve bu küçük aşk hikâyesinin tadını çıkar. 💕"
+    }
+
+];
+
+
+
+/* YAZI GÖSTER */
+
+function showLine(text){
+
+    lyrics.classList.remove("show");
+
+
+    setTimeout(
+        () => {
+
+            lyrics.textContent =
+                text;
+
+            lyrics.classList.add(
+                "show"
+            );
+
+        },
+        250
+    );
+
+}
+
+
+
+/* AÇILIŞI BAŞLAT */
+
+function startIntroMessage(){
+
+    introAudio.currentTime = 0;
+
+
+    introAudio.play().then(
+
+        () => {
+
+            startIntro.style.display =
+                "none";
+
+        }
+
+    ).catch(
+
+        () => {
+
+            startIntro.style.display =
+                "block";
+
+        }
+
+    );
+
+}
+
+
+/* BUTONA BASILINCA */
+
+startIntro.addEventListener(
+    "click",
+    startIntroMessage
+);
+
+
+
+/* SES OTOMATİK BAŞLASIN */
+
+window.addEventListener(
+    "load",
+    () => {
+
+        setTimeout(
+            () => {
+
+                startIntroMessage();
+
+            },
+            500
+        );
+
+    }
+);
+
+
+
+/* SESİN SÜRESİNE GÖRE YAZI DEĞİŞTİR */
+
+introAudio.addEventListener(
+    "timeupdate",
+    () => {
+
+        const current =
+            introAudio.currentTime;
+
+
+        let activeLine =
+            introLines[0];
+
+
+        for(
+            let i = 0;
+            i < introLines.length;
+            i++
+        ){
+
+            if(
+                current >=
+                introLines[i].time
+            ){
+
+                activeLine =
+                    introLines[i];
+
+            }
+
+        }
+
+
+        if(
+            lyrics.textContent !==
+            activeLine.text
+        ){
+
+            showLine(
+                activeLine.text
+            );
+
+        }
+
+    }
+);
+
+
+
+/* SES BİTİNCE SİTEYİ AÇ */
+
+introAudio.addEventListener(
+    "ended",
+    () => {
+
+        lyrics.classList.remove(
+            "show"
+        );
+
+
+        setTimeout(
+            () => {
+
+                intro.classList.add(
+                    "hide"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        intro.style.display =
+                            "none";
+
+
+                        /*
+                        Açılış bittikten sonra
+                        arka plan müziğini başlat
+                        */
+
+                        startBackgroundMusic();
+
+                    },
+                    1000
+                );
+
+            },
+            700
+        );
+
+    }
+);
+
+
+
+/* ==================================================
+   ARKA PLAN MÜZİĞİ
+================================================== */
 
 const music =
     document.getElementById("music");
@@ -807,30 +1389,36 @@ const musicButton =
 music.volume = 0.55;
 
 
-/* Kullanıcı sayfaya dokunursa
-   otomatik başlatmayı dene */
 
-document.addEventListener(
-    "click",
-    () => {
+function startBackgroundMusic(){
 
-        if(music.paused){
+    if(
+        music.paused
+    ){
 
-            music.play().then(() => {
+        music.play().then(
+            () => {
 
                 musicButton.innerHTML =
                     "🔊 Müziği Kapat";
 
-            }).catch(()=>{});
+            }
+        ).catch(
+            () => {
 
-        }
+                musicButton.innerHTML =
+                    "🎵 Müziği Aç";
 
-    },
-    {once:true}
-);
+            }
+        );
+
+    }
+
+}
 
 
-/* Müzik butonu */
+
+/* MÜZİK BUTONU */
 
 musicButton.addEventListener(
     "click",
@@ -838,16 +1426,24 @@ musicButton.addEventListener(
 
         event.stopPropagation();
 
-        if(music.paused){
 
-            music.play();
+        if(
+            music.paused
+        ){
 
-            musicButton.innerHTML =
-                "🔊 Müziği Kapat";
+            music.play().then(
+                () => {
+
+                    musicButton.innerHTML =
+                        "🔊 Müziği Kapat";
+
+                }
+            );
 
         }else{
 
             music.pause();
+
 
             musicButton.innerHTML =
                 "🎵 Müziği Aç";
@@ -859,33 +1455,45 @@ musicButton.addEventListener(
 
 
 
-/* =========================
+/* ==================================================
    FOTOĞRAFLAR
-========================= */
+================================================== */
 
 const photos =
-    document.querySelectorAll(".photo");
+    document.querySelectorAll(
+        ".photo"
+    );
+
 
 const viewer =
-    document.getElementById("viewer");
+    document.getElementById(
+        "viewer"
+    );
+
 
 const viewerImage =
-    document.getElementById("viewerImage");
+    document.getElementById(
+        "viewerImage"
+    );
+
 
 const viewerBackground =
     document.getElementById(
         "viewerBackground"
     );
 
+
 const closeViewer =
     document.getElementById(
         "closeViewer"
     );
 
+
 const loveTitle =
     document.getElementById(
         "loveTitle"
     );
+
 
 const loveText =
     document.getElementById(
@@ -915,6 +1523,7 @@ photos.forEach(
                 loveTitle.textContent =
                     photo.dataset.title;
 
+
                 loveText.textContent =
                     photo.dataset.message;
 
@@ -923,6 +1532,7 @@ photos.forEach(
 
                 viewer.style.display =
                     "flex";
+
 
                 document.body.style.overflow =
                     "hidden";
@@ -940,14 +1550,15 @@ photos.forEach(
 
 
 
-/* =========================
-   KAPAT
-========================= */
+/* ==================================================
+   FOTOĞRAF KAPAT
+================================================== */
 
 function closePhoto(){
 
     viewer.style.display =
         "none";
+
 
     document.body.style.overflow =
         "auto";
@@ -974,7 +1585,10 @@ document.addEventListener(
     "keydown",
     event => {
 
-        if(event.key === "Escape"){
+        if(
+            event.key ===
+            "Escape"
+        ){
 
             closePhoto();
 
@@ -985,9 +1599,9 @@ document.addEventListener(
 
 
 
-/* =========================
-   KALPLER
-========================= */
+/* ==================================================
+   UÇAN KALPLER
+================================================== */
 
 function createHearts(){
 
@@ -1012,15 +1626,19 @@ function createHearts(){
 
                 heart.innerHTML =
                     [
+
                         "❤",
                         "💗",
                         "💕",
                         "💖",
                         "💘"
+
                     ][
+
                         Math.floor(
                             Math.random()*5
                         )
+
                     ];
 
 
@@ -1040,6 +1658,7 @@ function createHearts(){
 
                 heart.style.setProperty(
                     "--x",
+
                     (
                         Math.random()*300-150
                     ) + "px"
@@ -1082,4 +1701,3 @@ function createHearts(){
 </body>
 
 </html>
-```
