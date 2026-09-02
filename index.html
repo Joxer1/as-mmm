@@ -31,11 +31,14 @@ body{
     position:fixed;
     inset:0;
     z-index:10000;
+
     display:flex;
     align-items:center;
     justify-content:center;
+
     text-align:center;
     overflow:hidden;
+
     background:#03030b;
 }
 
@@ -57,14 +60,74 @@ body{
     filter:blur(4px);
 }
 
+
+/* =========================
+   AÇILIŞ YILDIZLARI
+========================= */
+
+.intro-stars{
+    position:absolute;
+    inset:0;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
+
+.intro-star{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    background:white;
+
+    border-radius:50%;
+
+    box-shadow:
+        0 0 6px rgba(255,255,255,.9),
+        0 0 12px rgba(255,120,190,.7);
+
+    animation:
+        introStarTwinkle var(--duration) ease-in-out infinite;
+
+    animation-delay:var(--delay);
+
+    opacity:.25;
+}
+
+@keyframes introStarTwinkle{
+
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.5);
+    }
+
+}
+
+
+/* =========================
+   AÇILIŞ İÇERİK
+========================= */
+
 .intro-content{
     position:relative;
+
     z-index:2;
+
     width:min(850px,90vw);
 }
 
 .intro-heart{
     font-size:55px;
+
     color:#ff4d9d;
 
     text-shadow:
@@ -80,13 +143,16 @@ body{
     min-height:100px;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     padding:20px;
 
     font-size:34px;
+
     line-height:1.5;
+
     font-weight:500;
 
     color:rgba(255,255,255,.78);
@@ -105,39 +171,8 @@ body{
 
 .lyrics.show{
     opacity:1;
+
     transform:translateY(0);
-}
-
-.start-intro{
-    margin-top:35px;
-
-    padding:14px 28px;
-
-    border:none;
-    border-radius:30px;
-
-    background:
-        rgba(255,77,157,.9);
-
-    color:white;
-
-    font-size:17px;
-
-    cursor:pointer;
-
-    box-shadow:
-        0 0 25px
-        rgba(255,77,157,.65);
-
-    transition:.3s;
-}
-
-.start-intro:hover{
-    transform:scale(1.06);
-
-    box-shadow:
-        0 0 40px
-        rgba(255,77,157,.9);
 }
 
 .intro.hide{
@@ -145,19 +180,26 @@ body{
 }
 
 @keyframes introOut{
+
     to{
         opacity:0;
+
         visibility:hidden;
     }
+
 }
 
 
 /* =========================
-   GİRİŞ
+   GİRİŞ / HERO
 ========================= */
 
 .hero{
     height:100vh;
+
+    position:relative;
+
+    overflow:hidden;
 
     background:
         linear-gradient(
@@ -167,50 +209,293 @@ body{
         url('b.jpg') center/cover;
 
     display:flex;
+
     align-items:center;
     justify-content:center;
 
     text-align:center;
 }
 
+
+/* =========================
+   YILDIZ KATMANI
+========================= */
+
+.stars{
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    pointer-events:none;
+
+    overflow:hidden;
+}
+
+
+/* TEK YILDIZ */
+
+.star{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 5px rgba(255,255,255,.95),
+        0 0 12px rgba(255,180,220,.8);
+
+    opacity:.25;
+
+    animation:
+        twinkle var(--duration) ease-in-out infinite;
+
+    animation-delay:var(--delay);
+}
+
+@keyframes twinkle{
+
+    0%,100%{
+        opacity:.15;
+        transform:scale(.7);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.7);
+    }
+
+}
+
+
+/* =========================
+   PEMBE SİS
+========================= */
+
+.pink-mist{
+    position:absolute;
+
+    z-index:1;
+
+    width:650px;
+    height:400px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,30,140,.28),
+            rgba(255,0,120,.12) 35%,
+            transparent 70%
+        );
+
+    filter:blur(35px);
+
+    opacity:.75;
+
+    animation:
+        mistMove 7s ease-in-out infinite alternate;
+
+    pointer-events:none;
+}
+
+@keyframes mistMove{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.9);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+    }
+
+}
+
+
+/* =========================
+   KAYAN YILDIZ
+========================= */
+
+.shooting-star{
+    position:absolute;
+
+    width:140px;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.95)
+        );
+
+    border-radius:50%;
+
+    transform:rotate(-35deg);
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(255,255,255,.9)
+        );
+
+    opacity:0;
+
+    animation:
+        shootingStar 1.4s linear forwards;
+}
+
+@keyframes shootingStar{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            rotate(-35deg)
+            scaleX(.3);
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:0;
+
+        transform:
+            translate(-350px,350px)
+            rotate(-35deg)
+            scaleX(1);
+    }
+
+}
+
+
+/* =========================
+   HERO İÇERİK
+========================= */
+
+.hero-content{
+    position:relative;
+
+    z-index:3;
+
+    width:100%;
+}
+
+
+/* BAŞLIK */
+
 h1{
+    position:relative;
+
     font-size:68px;
 
     text-shadow:
         0 0 15px #ff4d9d,
-        0 0 35px #ff2d88;
+        0 0 35px #ff2d88,
+        0 0 70px rgba(255,45,136,.45);
 
     animation:
         glow 2s ease-in-out infinite alternate;
 }
 
+
+/* Başlığın arkasındaki ışık */
+
+h1::before{
+    content:"";
+
+    position:absolute;
+
+    z-index:-1;
+
+    left:50%;
+    top:50%;
+
+    width:75%;
+    height:160%;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,40,150,.22),
+            transparent 68%
+        );
+
+    filter:blur(25px);
+
+    opacity:.8;
+
+    pointer-events:none;
+}
+
 .sub{
     margin-top:16px;
+
     font-size:22px;
+
+    text-shadow:
+        0 0 10px rgba(255,255,255,.5);
 }
 
 .heart{
     font-size:45px;
+
     animation:beat 1s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 15px
+            rgba(255,50,150,.9)
+        );
 }
 
 @keyframes beat{
+
     50%{
         transform:scale(1.3);
     }
+
 }
 
 @keyframes glow{
+
     from{
+
         text-shadow:
-            0 0 10px #ff5ea8;
+            0 0 10px #ff5ea8,
+            0 0 20px rgba(255,45,136,.4);
+
     }
 
     to{
+
         text-shadow:
             0 0 20px #ff2d88,
-            0 0 45px #ff2d88;
+            0 0 45px #ff2d88,
+            0 0 75px rgba(255,45,136,.45);
+
     }
+
 }
 
 
@@ -220,12 +505,15 @@ h1{
 
 .wrap{
     max-width:1200px;
+
     margin:auto;
+
     padding:70px 20px;
 }
 
 .gallery{
     display:flex;
+
     gap:25px;
 
     overflow-x:auto;
@@ -241,6 +529,7 @@ h1{
 
 .gallery::-webkit-scrollbar-thumb{
     background:#ff5ea8;
+
     border-radius:20px;
 }
 
@@ -249,6 +538,7 @@ h1{
 
 .frame{
     min-width:240px;
+
     width:240px;
 
     padding:12px;
@@ -272,6 +562,7 @@ h1{
 }
 
 .frame:hover{
+
     transform:
         translateY(-10px)
         scale(1.03);
@@ -297,6 +588,7 @@ h1{
 }
 
 .photo:hover{
+
     transform:scale(1.04);
 
     box-shadow:
@@ -318,6 +610,7 @@ h1{
 }
 
 .note p{
+
     margin:18px 0;
 
     padding:15px 18px;
@@ -338,6 +631,7 @@ h1{
 ========================= */
 
 .photo-viewer{
+
     position:fixed;
 
     inset:0;
@@ -347,6 +641,7 @@ h1{
     display:none;
 
     align-items:center;
+
     justify-content:center;
 
     flex-direction:column;
@@ -358,6 +653,7 @@ h1{
 /* BULANIK ARKA PLAN */
 
 .viewer-background{
+
     position:absolute;
 
     inset:0;
@@ -372,14 +668,17 @@ h1{
 /* FOTOĞRAF */
 
 .viewer-image{
+
     position:relative;
 
     z-index:2;
 
     max-width:80vw;
+
     max-height:70vh;
 
     width:auto;
+
     height:auto;
 
     object-fit:contain;
@@ -403,15 +702,21 @@ h1{
 }
 
 @keyframes photoOpen{
+
     from{
+
         opacity:0;
+
         transform:scale(.65);
     }
 
     to{
+
         opacity:1;
+
         transform:scale(1);
     }
+
 }
 
 
@@ -420,9 +725,11 @@ h1{
 ========================= */
 
 .close{
+
     position:absolute;
 
     top:25px;
+
     right:35px;
 
     z-index:10;
@@ -449,6 +756,7 @@ h1{
 ========================= */
 
 .love-message{
+
     position:relative;
 
     z-index:5;
@@ -464,6 +772,7 @@ h1{
 }
 
 .love-message h2{
+
     font-size:32px;
 
     color:#ffd1e3;
@@ -475,6 +784,7 @@ h1{
 }
 
 .love-message p{
+
     font-size:19px;
 
     line-height:1.7;
@@ -483,15 +793,21 @@ h1{
 }
 
 @keyframes messageIn{
+
     from{
+
         opacity:0;
+
         transform:translateY(25px);
     }
 
     to{
+
         opacity:1;
+
         transform:translateY(0);
     }
+
 }
 
 
@@ -500,6 +816,7 @@ h1{
 ========================= */
 
 .flying-heart{
+
     position:fixed;
 
     z-index:6000;
@@ -515,6 +832,7 @@ h1{
 @keyframes flyHeart{
 
     0%{
+
         opacity:1;
 
         transform:
@@ -524,6 +842,7 @@ h1{
     }
 
     100%{
+
         opacity:0;
 
         transform:
@@ -532,6 +851,7 @@ h1{
             scale(1.5)
             rotate(25deg);
     }
+
 }
 
 
@@ -540,9 +860,11 @@ h1{
 ========================= */
 
 .music-button{
+
     position:fixed;
 
     right:25px;
+
     bottom:25px;
 
     z-index:7000;
@@ -572,6 +894,7 @@ h1{
 }
 
 .music-button:hover{
+
     transform:scale(1.07);
 
     box-shadow:
@@ -585,6 +908,7 @@ h1{
 ========================= */
 
 footer{
+
     text-align:center;
 
     padding:40px;
@@ -609,11 +933,14 @@ footer{
 
     .frame{
         min-width:190px;
+
         width:190px;
     }
 
     .viewer-image{
+
         max-width:88vw;
+
         max-height:60vh;
     }
 
@@ -626,7 +953,9 @@ footer{
     }
 
     .music-button{
+
         right:15px;
+
         bottom:15px;
 
         padding:11px 15px;
@@ -641,6 +970,36 @@ footer{
     .intro-heart{
         font-size:45px;
     }
+
+    .pink-mist{
+
+        width:400px;
+
+        height:300px;
+
+        filter:blur(30px);
+    }
+
+}
+
+
+/* =========================
+   HAREKET AZALTMA
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        animation-duration:.01ms !important;
+
+        animation-iteration-count:1 !important;
+
+        scroll-behavior:auto !important;
+    }
+
 }
 
 </style>
@@ -652,7 +1011,7 @@ footer{
 
 
 <!-- =========================
-     AÇILIŞ SESLİ MESAJ
+     AÇILIŞ
 ========================= -->
 
 <div
@@ -661,6 +1020,13 @@ footer{
 >
 
     <div class="intro-bg"></div>
+
+    <!-- Açılış yıldızları -->
+    <div
+        class="intro-stars"
+        id="introStars"
+    ></div>
+
 
     <div class="intro-content">
 
@@ -675,19 +1041,14 @@ footer{
             Merhaba Ecrin...
         </div>
 
-        <button
-            class="start-intro"
-            id="startIntro"
-        >
-            🔊 Açılış Mesajını Dinle
-        </button>
-
     </div>
 
 </div>
 
 
-<!-- AÇILIŞ SESİ -->
+<!-- =========================
+     AÇILIŞ SESİ
+========================= -->
 
 <audio
     id="introAudio"
@@ -709,7 +1070,25 @@ footer{
 
 <section class="hero">
 
-    <div>
+
+    <!-- YILDIZLAR -->
+
+    <div
+        class="stars"
+        id="stars"
+    ></div>
+
+
+    <!-- PEMBE SİS -->
+
+    <div
+        class="pink-mist"
+    ></div>
+
+
+    <!-- BAŞLIK -->
+
+    <div class="hero-content">
 
         <div class="heart">
             ❤
@@ -921,6 +1300,228 @@ footer{
 
 
 /* ==================================================
+   YILDIZ OLUŞTURMA
+================================================== */
+
+const stars =
+    document.getElementById("stars");
+
+const introStars =
+    document.getElementById("introStars");
+
+
+/* ==================================================
+   ANA SAYFA YILDIZLARI
+================================================== */
+
+function createStars(){
+
+    const starCount =
+        window.innerWidth <= 600
+            ? 55
+            : 100;
+
+
+    for(
+        let i = 0;
+        i < starCount;
+        i++
+    ){
+
+        const star =
+            document.createElement("div");
+
+
+        star.className =
+            "star";
+
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+
+        const size =
+            Math.random() * 2 + 1;
+
+
+        star.style.width =
+            size + "px";
+
+
+        star.style.height =
+            size + "px";
+
+
+        star.style.setProperty(
+            "--duration",
+            (2 + Math.random() * 4) + "s"
+        );
+
+
+        star.style.setProperty(
+            "--delay",
+            (Math.random() * 5) + "s"
+        );
+
+
+        stars.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   AÇILIŞ YILDIZLARI
+================================================== */
+
+function createIntroStars(){
+
+    const starCount =
+        window.innerWidth <= 600
+            ? 35
+            : 70;
+
+
+    for(
+        let i = 0;
+        i < starCount;
+        i++
+    ){
+
+        const star =
+            document.createElement("div");
+
+
+        star.className =
+            "intro-star";
+
+
+        star.style.left =
+            Math.random() * 100 + "%";
+
+
+        star.style.top =
+            Math.random() * 100 + "%";
+
+
+        const size =
+            Math.random() * 2 + 1;
+
+
+        star.style.width =
+            size + "px";
+
+
+        star.style.height =
+            size + "px";
+
+
+        star.style.setProperty(
+            "--duration",
+            (2 + Math.random() * 4) + "s"
+        );
+
+
+        star.style.setProperty(
+            "--delay",
+            (Math.random() * 5) + "s"
+        );
+
+
+        introStars.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+createStars();
+
+createIntroStars();
+
+
+
+/* ==================================================
+   KAYAN YILDIZLAR
+================================================== */
+
+function createShootingStar(){
+
+    const shooting =
+        document.createElement("div");
+
+
+    shooting.className =
+        "shooting-star";
+
+
+    shooting.style.left =
+        (
+            75 +
+            Math.random() * 25
+        ) + "%";
+
+
+    shooting.style.top =
+        (
+            Math.random() * 45
+        ) + "%";
+
+
+    document
+        .getElementById("stars")
+        .appendChild(shooting);
+
+
+    setTimeout(
+        () => {
+
+            shooting.remove();
+
+        },
+        1500
+    );
+
+}
+
+
+/* İlk kayan yıldız */
+
+setTimeout(
+    createShootingStar,
+    3000
+);
+
+
+/* Daha sonra rastgele */
+
+setInterval(
+    () => {
+
+        if(
+            Math.random() > .35
+        ){
+
+            createShootingStar();
+
+        }
+
+    },
+    5500
+);
+
+
+
+/* ==================================================
    AÇILIŞ SESLİ MESAJ
 ================================================== */
 
@@ -933,41 +1534,47 @@ const introAudio =
 const lyrics =
     document.getElementById("lyrics");
 
-const startIntro =
-    document.getElementById("startIntro");
-
 
 /* ==================================================
    AÇILIŞ YAZILARI
-
-   YAZILAR 2 SANİYE ERKENE ÇEKİLDİ
+   2 SANİYE ERKENE ÇEKİLDİ
 ================================================== */
 
 const introLines = [
 
     {
         time:0,
-        text:"Merhaba Ecrin..."
+
+        text:
+        "Merhaba Ecrin..."
     },
 
     {
         time:1,
-        text:"Bu sitede sana olan aşkımı ilan ediyorum. ❤️"
+
+        text:
+        "Bu sitede sana olan aşkımı ilan ediyorum. ❤️"
     },
 
     {
         time:5,
-        text:"Burada gördüğün her şey senin için hazırlandı."
+
+        text:
+        "Burada gördüğün her şey senin için hazırlandı."
     },
 
     {
         time:9,
-        text:"Şimdi arkana yaslan..."
+
+        text:
+        "Şimdi arkana yaslan..."
     },
 
     {
         time:12,
-        text:"Ve bu küçük aşk hikâyesinin tadını çıkar. 💕"
+
+        text:
+        "Ve bu küçük aşk hikâyesinin tadını çıkar. 💕"
     }
 
 ];
@@ -980,7 +1587,10 @@ const introLines = [
 
 function showLine(text){
 
-    lyrics.classList.remove("show");
+    lyrics.classList.remove(
+        "show"
+    );
+
 
     setTimeout(
         () => {
@@ -1006,14 +1616,17 @@ function showLine(text){
 
 function startIntroMessage(){
 
-    introAudio.currentTime = 0;
+    introAudio.currentTime =
+        0;
+
 
     introAudio.play().then(
 
         () => {
 
-            startIntro.style.display =
-                "none";
+            console.log(
+                "Açılış sesi başladı."
+            );
 
         }
 
@@ -1021,8 +1634,15 @@ function startIntroMessage(){
 
         () => {
 
-            startIntro.style.display =
-                "block";
+            /*
+            Tarayıcı otomatik ses
+            oynatmayı engellerse
+            konsola bilgi veriyoruz.
+            */
+
+            console.log(
+                "Tarayıcı otomatik sesi engelledi."
+            );
 
         }
 
@@ -1032,17 +1652,8 @@ function startIntroMessage(){
 
 
 
-/* BUTONA BASILINCA */
-
-startIntro.addEventListener(
-    "click",
-    startIntroMessage
-);
-
-
-
 /* ==================================================
-   OTOMATİK BAŞLATMAYI DENE
+   SAYFA AÇILINCA OTOMATİK BAŞLAT
 ================================================== */
 
 window.addEventListener(
@@ -1064,7 +1675,7 @@ window.addEventListener(
 
 
 /* ==================================================
-   SESLE YAZILARI EŞLEŞTİR
+   SES + YAZI SENKRONU
 ================================================== */
 
 introAudio.addEventListener(
@@ -1143,8 +1754,8 @@ introAudio.addEventListener(
 
 
                         /*
-                        Açılış sesi bittikten sonra
-                        ana müziği başlat
+                        Açılış bittikten sonra
+                        arka plan müziğini başlat
                         */
 
                         startBackgroundMusic();
@@ -1173,7 +1784,8 @@ const musicButton =
     document.getElementById("musicButton");
 
 
-music.volume = 0.55;
+music.volume =
+    0.55;
 
 
 
@@ -1419,7 +2031,7 @@ function createHearts(){
                         "💘"
                     ][
                         Math.floor(
-                            Math.random()*5
+                            Math.random() * 5
                         )
                     ];
 
@@ -1427,21 +2039,21 @@ function createHearts(){
                 heart.style.left =
                     (
                         10 +
-                        Math.random()*80
+                        Math.random() * 80
                     ) + "%";
 
 
                 heart.style.bottom =
                     (
                         10 +
-                        Math.random()*25
+                        Math.random() * 25
                     ) + "%";
 
 
                 heart.style.setProperty(
                     "--x",
                     (
-                        Math.random()*300-150
+                        Math.random() * 300 - 150
                     ) + "px"
                 );
 
@@ -1449,7 +2061,7 @@ function createHearts(){
                 heart.style.fontSize =
                     (
                         18 +
-                        Math.random()*28
+                        Math.random() * 28
                     ) + "px";
 
 
