@@ -46,6 +46,284 @@ body{
 
 
 /* ==================================================
+   ŞİFRE EKRANI
+================================================== */
+
+#passwordScreen{
+    position:fixed;
+    inset:0;
+    z-index:999999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,40,140,.25),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(120,30,255,.15),
+            transparent 55%
+        ),
+        linear-gradient(
+            135deg,
+            #03030b,
+            #18000d,
+            #03030b
+        );
+}
+
+.password-stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255,255,255,.8) 1px, transparent 2px),
+        radial-gradient(circle at 75% 15%, rgba(255,180,220,.8) 1px, transparent 2px),
+        radial-gradient(circle at 35% 75%, rgba(255,255,255,.7) 1px, transparent 2px),
+        radial-gradient(circle at 85% 80%, rgba(255,150,210,.7) 1px, transparent 2px),
+        radial-gradient(circle at 55% 45%, rgba(255,255,255,.5) 1px, transparent 2px);
+
+    background-size:
+        180px 180px,
+        230px 230px,
+        210px 210px,
+        260px 260px,
+        190px 190px;
+
+    animation:
+        passwordStars 10s linear infinite;
+
+    opacity:.55;
+}
+
+@keyframes passwordStars{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-40px);
+    }
+
+}
+
+.password-box{
+    position:relative;
+    z-index:2;
+
+    width:min(430px,90vw);
+
+    padding:45px 30px;
+
+    border-radius:30px;
+
+    background:
+        rgba(255,255,255,.07);
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 0 40px rgba(255,40,140,.22),
+        0 25px 80px rgba(0,0,0,.55);
+
+    animation:
+        passwordAppear .8s ease;
+}
+
+@keyframes passwordAppear{
+
+    from{
+        opacity:0;
+        transform:
+            translateY(25px)
+            scale(.94);
+    }
+
+    to{
+        opacity:1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+}
+
+.password-heart{
+    font-size:60px;
+
+    margin-bottom:20px;
+
+    animation:
+        beat 1s infinite;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255,50,150,.9)
+        );
+}
+
+.password-box h2{
+
+    font-size:32px;
+
+    margin-bottom:10px;
+
+    color:#ffd1e3;
+
+    text-shadow:
+        0 0 15px #ff4d9d,
+        0 0 35px rgba(255,45,136,.5);
+}
+
+.password-box p{
+
+    color:
+        rgba(255,255,255,.72);
+
+    line-height:1.7;
+
+    margin-bottom:25px;
+
+    font-size:16px;
+}
+
+.password-input{
+
+    width:100%;
+
+    padding:15px 18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:15px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:white;
+
+    text-align:center;
+
+    font-size:17px;
+
+    margin-bottom:14px;
+
+    transition:.3s;
+}
+
+.password-input:focus{
+
+    border-color:
+        rgba(255,100,180,.7);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,50,150,.2);
+}
+
+.password-input::placeholder{
+
+    color:
+        rgba(255,255,255,.45);
+}
+
+.password-button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4d9d,
+            #ff167d
+        );
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,50,150,.45);
+
+    transition:.3s;
+}
+
+.password-button:hover{
+
+    transform:scale(1.03);
+
+    box-shadow:
+        0 0 40px
+        rgba(255,50,150,.75);
+}
+
+.password-button:active{
+
+    transform:scale(.97);
+}
+
+.password-error{
+
+    height:22px;
+
+    margin-top:13px;
+
+    color:#ff91b9;
+
+    font-size:14px;
+
+    opacity:0;
+
+    transition:.3s;
+}
+
+.password-error.show{
+    opacity:1;
+}
+
+.password-hint{
+
+    margin-top:20px;
+
+    font-size:12px;
+
+    color:
+        rgba(255,255,255,.35);
+}
+
+
+/* ==================================================
    AÇILIŞ
 ================================================== */
 
@@ -1504,6 +1782,18 @@ footer{
         font-size:17px;
     }
 
+    .password-box{
+        padding:38px 22px;
+    }
+
+    .password-box h2{
+        font-size:27px;
+    }
+
+    .password-heart{
+        font-size:50px;
+    }
+
 }
 
 
@@ -1532,6 +1822,61 @@ footer{
 
 
 <body>
+
+
+<!-- ==================================================
+     ŞİFRE EKRANI
+================================================== -->
+
+<div id="passwordScreen">
+
+    <div class="password-stars"></div>
+
+    <div class="password-box">
+
+        <div class="password-heart">
+            ❤️
+        </div>
+
+        <h2>
+            Ecrin'e Özel
+        </h2>
+
+        <p>
+            Bu küçük aşk dünyasına girmek için<br>
+            sana özel şifreyi gir. 💕
+        </p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            class="password-input"
+            placeholder="Şifreyi gir ❤️"
+            autocomplete="off"
+        >
+
+        <button
+            class="password-button"
+            id="passwordButton"
+        >
+            Kalbime Gir 💗
+        </button>
+
+        <div
+            class="password-error"
+            id="passwordError"
+        >
+            Şifre yanlış... Burası sadece Ecrin için. 🥺
+        </div>
+
+        <div class="password-hint">
+            Küçük bir sırımız var... ❤️
+        </div>
+
+    </div>
+
+</div>
+
 
 
 <!-- ==================================================
@@ -1685,13 +2030,12 @@ footer{
     <div class="gallery">
 
 
-        <!-- E1 -->
-
         <div class="frame">
 
             <img
                 src="e1.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 1"
 
                 data-title="Seninle Başlayan Hikâyem ❤️"
 
@@ -1706,13 +2050,12 @@ footer{
 
 
 
-        <!-- E2 -->
-
         <div class="frame">
 
             <img
                 src="e2.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 2"
 
                 data-title="Gülüşünde Kayboluyorum 💗"
 
@@ -1727,13 +2070,12 @@ footer{
 
 
 
-        <!-- E3 -->
-
         <div class="frame">
 
             <img
                 src="e3.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 3"
 
                 data-title="Kalbimin En Güzel Yeri 💕"
 
@@ -1748,13 +2090,12 @@ footer{
 
 
 
-        <!-- E4 -->
-
         <div class="frame">
 
             <img
                 src="e4.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 4"
 
                 data-title="İyi Ki Seni Tanımışım 💖"
 
@@ -1769,13 +2110,12 @@ footer{
 
 
 
-        <!-- E5 -->
-
         <div class="frame">
 
             <img
                 src="e5.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 5"
 
                 data-title="Sen Varken Dünya Daha Güzel 💘"
 
@@ -1790,13 +2130,12 @@ footer{
 
 
 
-        <!-- E6 -->
-
         <div class="frame">
 
             <img
                 src="e6.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 6"
 
                 data-title="Seni Her Gün Biraz Daha Seviyorum ❤️"
 
@@ -1811,13 +2150,12 @@ footer{
 
 
 
-        <!-- E7 -->
-
         <div class="frame">
 
             <img
                 src="e7.jpg"
                 class="photo"
+                alt="Ecrin ile güzel anı 7"
 
                 data-title="Hep Seni Seçeceğim... 💍❤️"
 
@@ -2050,6 +2388,7 @@ footer{
     <img
         class="viewer-image"
         id="viewerImage"
+        alt="Ecrin"
     >
 
     <div class="love-message">
@@ -2097,6 +2436,102 @@ footer{
 
 
 <script>
+
+
+/* ==================================================
+   ŞİFRE SİSTEMİ
+================================================== */
+
+const PASSWORD = "ecrin123";
+
+const passwordScreen =
+    document.getElementById("passwordScreen");
+
+const passwordInput =
+    document.getElementById("passwordInput");
+
+const passwordButton =
+    document.getElementById("passwordButton");
+
+const passwordError =
+    document.getElementById("passwordError");
+
+
+function checkPassword(){
+
+    if(
+        passwordInput.value === PASSWORD
+    ){
+
+        passwordError.classList.remove("show");
+
+        passwordButton.innerHTML =
+            "Hoş geldin Ecrin ❤️";
+
+        passwordButton.disabled =
+            true;
+
+        passwordScreen.style.transition =
+            "opacity 1s ease, visibility 1s ease";
+
+        passwordScreen.style.opacity =
+            "0";
+
+        passwordScreen.style.visibility =
+            "hidden";
+
+        setTimeout(
+            () => {
+
+                passwordScreen.style.display =
+                    "none";
+
+                passwordInput.value = "";
+
+                passwordButton.disabled =
+                    false;
+
+            },
+            1000
+        );
+
+    }else{
+
+        passwordError.classList.add("show");
+
+        passwordInput.value = "";
+
+        passwordInput.focus();
+
+        passwordButton.innerHTML =
+            "Tekrar Dene ❤️";
+
+    }
+
+}
+
+
+passwordButton.addEventListener(
+    "click",
+    checkPassword
+);
+
+
+passwordInput.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key === "Enter"
+        ){
+
+            checkPassword();
+
+        }
+
+    }
+);
+
 
 
 /* ==================================================
