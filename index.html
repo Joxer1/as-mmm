@@ -1,0 +1,380 @@
+```html
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ecrin'e Aşığım</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI,sans-serif;
+    background:#050816;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* ANA GİRİŞ */
+.hero{
+    height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65)),
+        url('b.jpg') center/cover;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+h1{
+    font-size:68px;
+    text-shadow:0 0 20px #ff4d9d;
+    animation:glow 2s ease-in-out infinite alternate;
+}
+
+.sub{
+    margin-top:16px;
+    font-size:22px;
+    opacity:.95;
+}
+
+.heart{
+    font-size:42px;
+    animation:beat 1s infinite;
+}
+
+@keyframes beat{
+    50%{
+        transform:scale(1.25);
+    }
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 10px #ff5ea8;
+    }
+    to{
+        text-shadow:0 0 35px #ff2d88;
+    }
+}
+
+/* FOTOĞRAF ALANI */
+.wrap{
+    max-width:1200px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+/* FOTOĞRAFLARI YATAY DİZEN */
+.gallery{
+    display:flex;
+    gap:25px;
+    overflow-x:auto;
+    padding:20px 10px 30px;
+    scroll-behavior:smooth;
+}
+
+.gallery::-webkit-scrollbar{
+    height:8px;
+}
+
+.gallery::-webkit-scrollbar-thumb{
+    background:#ff5ea8;
+    border-radius:20px;
+}
+
+/* FOTOĞRAF ÇERÇEVESİ */
+.frame{
+    min-width:240px;
+    width:240px;
+
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:24px;
+
+    padding:12px;
+
+    box-shadow:
+        0 0 35px rgba(255,0,120,.18);
+
+    transition:.45s;
+}
+
+.frame:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:
+        0 0 40px rgba(255,105,180,.45);
+}
+
+/* KARE FOTOĞRAF */
+.photo{
+    width:100%;
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    display:block;
+
+    cursor:pointer;
+
+    transition:.45s;
+}
+
+.photo:hover{
+    transform:scale(1.04);
+
+    box-shadow:
+        0 0 30px rgba(255,105,180,.75);
+}
+
+/* NOTLAR */
+.note{
+    margin-top:40px;
+    line-height:1.9;
+    font-size:18px;
+}
+
+.note p{
+    margin:18px 0;
+    padding:15px 18px;
+
+    border-left:3px solid #ff5ea8;
+
+    background:rgba(255,255,255,.04);
+    border-radius:10px;
+
+    opacity:0;
+    transform:translateY(20px);
+
+    animation:fade .8s forwards;
+}
+
+.note p:nth-child(1){
+    animation-delay:.2s;
+}
+
+.note p:nth-child(2){
+    animation-delay:.6s;
+}
+
+.note p:nth-child(3){
+    animation-delay:1s;
+}
+
+.note p:nth-child(4){
+    animation-delay:1.4s;
+}
+
+@keyframes fade{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MÜZİK BUTONU */
+.music-button{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+
+    width:55px;
+    height:55px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#ff4d9d;
+    color:white;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 20px rgba(255,77,157,.6);
+
+    z-index:999;
+
+    transition:.3s;
+}
+
+.music-button:hover{
+    transform:scale(1.12);
+}
+
+/* ALT */
+footer{
+    text-align:center;
+    padding:40px;
+    color:#ffd1e3;
+}
+
+/* TELEFON */
+@media(max-width:600px){
+
+    h1{
+        font-size:42px;
+    }
+
+    .sub{
+        font-size:17px;
+    }
+
+    .frame{
+        min-width:190px;
+        width:190px;
+    }
+
+    .wrap{
+        padding:50px 10px;
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- GİRİŞ -->
+<section class="hero">
+
+    <div>
+
+        <div class="heart">❤</div>
+
+        <h1>ECRİN'E AŞIĞIM</h1>
+
+        <p class="sub">
+            Bu sayfadaki her satır sana yazıldı.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOTOĞRAFLAR -->
+<div class="wrap">
+
+    <div class="gallery">
+
+        <div class="frame">
+            <img src="e.jpg" class="photo">
+        </div>
+
+        <div class="frame">
+            <img src="e2.jpg" class="photo">
+        </div>
+
+        <div class="frame">
+            <img src="e3.jpg" class="photo">
+        </div>
+
+        <div class="frame">
+            <img src="e4.jpg" class="photo">
+        </div>
+
+    </div>
+
+
+    <!-- AŞK NOTLARI -->
+    <div class="note">
+
+        <p>
+            Senin gülüşün, en karanlık günlerimi bile
+            aydınlatan bir güneş gibi.
+        </p>
+
+        <p>
+            Yanında geçen küçücük bir an bile bana
+            saatlerce mutluluk veriyor.
+        </p>
+
+        <p>
+            Ne kadar zaman geçerse geçsin,
+            kalbimdeki yerin hep aynı kalacak.
+        </p>
+
+        <p>
+            İyi ki varsın Ecrin...
+            Seni kelimelerin anlatabileceğinden daha çok seviyorum. ❤
+        </p>
+
+    </div>
+
+</div>
+
+
+<footer>
+    ❤ Sonsuza kadar kalbimde ❤
+</footer>
+
+
+<!-- MÜZİK -->
+<audio id="music" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- MÜZİK BUTONU -->
+<button class="music-button" id="musicButton">
+    🎵
+</button>
+
+
+<script>
+
+const music = document.getElementById("music");
+const button = document.getElementById("musicButton");
+
+/* MÜZİK BUTONU */
+
+button.addEventListener("click", () => {
+
+    if(music.paused){
+
+        music.play();
+
+        button.innerHTML = "🔊";
+
+    }else{
+
+        music.pause();
+
+        button.innerHTML = "🎵";
+
+    }
+
+});
+
+
+/* SAYFAYA İLK TIKLAMADA MÜZİĞİ BAŞLAT */
+
+document.addEventListener("click", () => {
+
+    if(music.paused){
+
+        music.play().catch(()=>{});
+
+    }
+
+},{once:true});
+
+</script>
+
+</body>
+</html>
+```
