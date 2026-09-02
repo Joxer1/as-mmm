@@ -28,98 +28,65 @@ body{
 ========================= */
 
 .intro{
-
     position:fixed;
-
     inset:0;
-
     z-index:10000;
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     text-align:center;
-
     overflow:hidden;
-
     background:#03030b;
-
 }
 
-
 .intro-bg{
-
     position:absolute;
-
     inset:-30px;
 
     background:
-
         radial-gradient(
             circle at center,
             rgba(255,40,140,.25),
             transparent 45%
         ),
-
         linear-gradient(
             rgba(0,0,0,.80),
             rgba(5,0,15,.96)
         );
 
     filter:blur(4px);
-
 }
-
 
 .intro-content{
-
     position:relative;
-
     z-index:2;
-
     width:min(850px,90vw);
-
 }
 
-
 .intro-heart{
-
     font-size:55px;
-
     color:#ff4d9d;
 
     text-shadow:
-
         0 0 20px #ff4d9d,
-
         0 0 50px #ff2d88;
 
     animation:beat 1s infinite;
 
     margin-bottom:35px;
-
 }
 
-
 .lyrics{
-
     min-height:100px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     padding:20px;
 
     font-size:34px;
-
     line-height:1.5;
-
     font-weight:500;
 
     color:rgba(255,255,255,.78);
@@ -134,27 +101,19 @@ body{
     transition:
         opacity .5s ease,
         transform .5s ease;
-
 }
-
 
 .lyrics.show{
-
     opacity:1;
-
     transform:translateY(0);
-
 }
 
-
 .start-intro{
-
     margin-top:35px;
 
     padding:14px 28px;
 
     border:none;
-
     border-radius:30px;
 
     background:
@@ -171,41 +130,26 @@ body{
         rgba(255,77,157,.65);
 
     transition:.3s;
-
 }
 
-
 .start-intro:hover{
-
     transform:scale(1.06);
 
     box-shadow:
         0 0 40px
         rgba(255,77,157,.9);
-
 }
-
 
 .intro.hide{
-
-    animation:
-        introOut 1s forwards;
-
+    animation:introOut 1s forwards;
 }
-
 
 @keyframes introOut{
-
     to{
-
         opacity:0;
-
         visibility:hidden;
-
     }
-
 }
-
 
 
 /* =========================
@@ -213,94 +157,60 @@ body{
 ========================= */
 
 .hero{
-
     height:100vh;
 
     background:
-
         linear-gradient(
             rgba(0,0,0,.45),
             rgba(0,0,0,.70)
         ),
-
         url('b.jpg') center/cover;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     text-align:center;
-
 }
 
-
 h1{
-
     font-size:68px;
 
     text-shadow:
-
         0 0 15px #ff4d9d,
-
         0 0 35px #ff2d88;
 
     animation:
         glow 2s ease-in-out infinite alternate;
-
 }
-
 
 .sub{
-
     margin-top:16px;
-
     font-size:22px;
-
 }
-
 
 .heart{
-
     font-size:45px;
-
-    animation:
-        beat 1s infinite;
-
+    animation:beat 1s infinite;
 }
-
 
 @keyframes beat{
-
     50%{
-
         transform:scale(1.3);
-
     }
-
 }
 
-
 @keyframes glow{
-
     from{
-
         text-shadow:
             0 0 10px #ff5ea8;
-
     }
 
     to{
-
         text-shadow:
-
             0 0 20px #ff2d88,
-
             0 0 45px #ff2d88;
-
     }
-
 }
 
 
@@ -309,20 +219,13 @@ h1{
 ========================= */
 
 .wrap{
-
     max-width:1200px;
-
     margin:auto;
-
     padding:70px 20px;
-
 }
 
-
 .gallery{
-
     display:flex;
-
     gap:25px;
 
     overflow-x:auto;
@@ -330,32 +233,22 @@ h1{
     padding:20px 10px 35px;
 
     scroll-behavior:smooth;
-
 }
-
 
 .gallery::-webkit-scrollbar{
-
     height:8px;
-
 }
 
-
 .gallery::-webkit-scrollbar-thumb{
-
     background:#ff5ea8;
-
     border-radius:20px;
-
 }
 
 
 /* FOTOĞRAF KARTI */
 
 .frame{
-
     min-width:240px;
-
     width:240px;
 
     padding:12px;
@@ -376,23 +269,18 @@ h1{
         rgba(255,0,120,.18);
 
     transition:.4s;
-
 }
 
-
 .frame:hover{
-
     transform:
         translateY(-10px)
         scale(1.03);
-
 }
 
 
 /* KARE FOTOĞRAF */
 
 .photo{
-
     width:100%;
 
     aspect-ratio:1 / 1;
@@ -406,18 +294,14 @@ h1{
     cursor:pointer;
 
     transition:.4s;
-
 }
 
-
 .photo:hover{
-
     transform:scale(1.04);
 
     box-shadow:
         0 0 35px
         rgba(255,105,180,.8);
-
 }
 
 
@@ -426,18 +310,14 @@ h1{
 ========================= */
 
 .note{
-
     margin-top:40px;
 
     line-height:1.9;
 
     font-size:18px;
-
 }
 
-
 .note p{
-
     margin:18px 0;
 
     padding:15px 18px;
@@ -450,7 +330,6 @@ h1{
         rgba(255,255,255,.04);
 
     border-radius:10px;
-
 }
 
 
@@ -459,7 +338,6 @@ h1{
 ========================= */
 
 .photo-viewer{
-
     position:fixed;
 
     inset:0;
@@ -469,20 +347,17 @@ h1{
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     flex-direction:column;
 
     padding:40px;
-
 }
 
 
 /* BULANIK ARKA PLAN */
 
 .viewer-background{
-
     position:absolute;
 
     inset:0;
@@ -491,24 +366,20 @@ h1{
         rgba(0,0,0,.72);
 
     backdrop-filter:blur(18px);
-
 }
 
 
 /* FOTOĞRAF */
 
 .viewer-image{
-
     position:relative;
 
     z-index:2;
 
     max-width:80vw;
-
     max-height:70vh;
 
     width:auto;
-
     height:auto;
 
     object-fit:contain;
@@ -529,28 +400,18 @@ h1{
 
     animation:
         photoOpen .5s ease;
-
 }
 
-
 @keyframes photoOpen{
-
     from{
-
         opacity:0;
-
         transform:scale(.65);
-
     }
 
     to{
-
         opacity:1;
-
         transform:scale(1);
-
     }
-
 }
 
 
@@ -559,11 +420,9 @@ h1{
 ========================= */
 
 .close{
-
     position:absolute;
 
     top:25px;
-
     right:35px;
 
     z-index:10;
@@ -578,14 +437,10 @@ h1{
         0 0 15px #ff4d9d;
 
     transition:.3s;
-
 }
 
-
 .close:hover{
-
     transform:scale(1.2);
-
 }
 
 
@@ -594,7 +449,6 @@ h1{
 ========================= */
 
 .love-message{
-
     position:relative;
 
     z-index:5;
@@ -607,12 +461,9 @@ h1{
 
     animation:
         messageIn .8s ease;
-
 }
 
-
 .love-message h2{
-
     font-size:32px;
 
     color:#ffd1e3;
@@ -621,39 +472,26 @@ h1{
         0 0 15px #ff4d9d;
 
     margin-bottom:10px;
-
 }
 
-
 .love-message p{
-
     font-size:19px;
 
     line-height:1.7;
 
     color:#fff;
-
 }
 
-
 @keyframes messageIn{
-
     from{
-
         opacity:0;
-
         transform:translateY(25px);
-
     }
 
     to{
-
         opacity:1;
-
         transform:translateY(0);
-
     }
-
 }
 
 
@@ -662,7 +500,6 @@ h1{
 ========================= */
 
 .flying-heart{
-
     position:fixed;
 
     z-index:6000;
@@ -673,25 +510,20 @@ h1{
 
     animation:
         flyHeart 3s ease-out forwards;
-
 }
-
 
 @keyframes flyHeart{
 
     0%{
-
         opacity:1;
 
         transform:
             translateY(0)
             scale(.5)
             rotate(0deg);
-
     }
 
     100%{
-
         opacity:0;
 
         transform:
@@ -699,9 +531,7 @@ h1{
             translateX(var(--x))
             scale(1.5)
             rotate(25deg);
-
     }
-
 }
 
 
@@ -710,11 +540,9 @@ h1{
 ========================= */
 
 .music-button{
-
     position:fixed;
 
     right:25px;
-
     bottom:25px;
 
     z-index:7000;
@@ -741,18 +569,14 @@ h1{
         rgba(255,77,157,.7);
 
     transition:.3s;
-
 }
 
-
 .music-button:hover{
-
     transform:scale(1.07);
 
     box-shadow:
         0 0 35px
         rgba(255,77,157,1);
-
 }
 
 
@@ -761,13 +585,11 @@ h1{
 ========================= */
 
 footer{
-
     text-align:center;
 
     padding:40px;
 
     color:#ffd1e3;
-
 }
 
 
@@ -778,77 +600,47 @@ footer{
 @media(max-width:600px){
 
     h1{
-
         font-size:42px;
-
     }
-
 
     .sub{
-
         font-size:17px;
-
     }
-
 
     .frame{
-
         min-width:190px;
-
         width:190px;
-
     }
-
 
     .viewer-image{
-
         max-width:88vw;
-
         max-height:60vh;
-
     }
-
 
     .love-message h2{
-
         font-size:25px;
-
     }
-
 
     .love-message p{
-
         font-size:16px;
-
     }
 
-
     .music-button{
-
         right:15px;
-
         bottom:15px;
 
         padding:11px 15px;
 
         font-size:14px;
-
     }
-
 
     .lyrics{
-
         font-size:23px;
-
     }
-
 
     .intro-heart{
-
         font-size:45px;
-
     }
-
 }
 
 </style>
@@ -870,13 +662,11 @@ footer{
 
     <div class="intro-bg"></div>
 
-
     <div class="intro-content">
 
         <div class="intro-heart">
             ❤
         </div>
-
 
         <div
             class="lyrics"
@@ -884,7 +674,6 @@ footer{
         >
             Merhaba Ecrin...
         </div>
-
 
         <button
             class="start-intro"
@@ -898,7 +687,7 @@ footer{
 </div>
 
 
-<!-- AÇILIŞ SES DOSYASI -->
+<!-- AÇILIŞ SESİ -->
 
 <audio
     id="introAudio"
@@ -1072,7 +861,6 @@ footer{
         id="viewerBackground"
     ></div>
 
-
     <div
         class="close"
         id="closeViewer"
@@ -1080,12 +868,10 @@ footer{
         ×
     </div>
 
-
     <img
         class="viewer-image"
         id="viewerImage"
     >
-
 
     <div class="love-message">
 
@@ -1151,19 +937,11 @@ const startIntro =
     document.getElementById("startIntro");
 
 
-/*
-==================================================
-SESLE EŞLEŞECEK YAZILAR
+/* ==================================================
+   AÇILIŞ YAZILARI
 
-time = saniye
-
-ÖRNEK:
-
-0 saniye  → Merhaba Ecrin
-3 saniye  → Bu sitede...
-7 saniye  → Burada...
-==================================================
-*/
+   YAZILAR 2 SANİYE ERKENE ÇEKİLDİ
+================================================== */
 
 const introLines = [
 
@@ -1173,22 +951,22 @@ const introLines = [
     },
 
     {
-        time:3,
+        time:1,
         text:"Bu sitede sana olan aşkımı ilan ediyorum. ❤️"
     },
 
     {
-        time:7,
+        time:5,
         text:"Burada gördüğün her şey senin için hazırlandı."
     },
 
     {
-        time:11,
+        time:9,
         text:"Şimdi arkana yaslan..."
     },
 
     {
-        time:14,
+        time:12,
         text:"Ve bu küçük aşk hikâyesinin tadını çıkar. 💕"
     }
 
@@ -1196,12 +974,13 @@ const introLines = [
 
 
 
-/* YAZI GÖSTER */
+/* ==================================================
+   YAZI GÖSTER
+================================================== */
 
 function showLine(text){
 
     lyrics.classList.remove("show");
-
 
     setTimeout(
         () => {
@@ -1221,12 +1000,13 @@ function showLine(text){
 
 
 
-/* AÇILIŞI BAŞLAT */
+/* ==================================================
+   AÇILIŞI BAŞLAT
+================================================== */
 
 function startIntroMessage(){
 
     introAudio.currentTime = 0;
-
 
     introAudio.play().then(
 
@@ -1251,6 +1031,7 @@ function startIntroMessage(){
 }
 
 
+
 /* BUTONA BASILINCA */
 
 startIntro.addEventListener(
@@ -1260,7 +1041,9 @@ startIntro.addEventListener(
 
 
 
-/* SES OTOMATİK BAŞLASIN */
+/* ==================================================
+   OTOMATİK BAŞLATMAYI DENE
+================================================== */
 
 window.addEventListener(
     "load",
@@ -1280,7 +1063,9 @@ window.addEventListener(
 
 
 
-/* SESİN SÜRESİNE GÖRE YAZI DEĞİŞTİR */
+/* ==================================================
+   SESLE YAZILARI EŞLEŞTİR
+================================================== */
 
 introAudio.addEventListener(
     "timeupdate",
@@ -1329,7 +1114,9 @@ introAudio.addEventListener(
 
 
 
-/* SES BİTİNCE SİTEYİ AÇ */
+/* ==================================================
+   SES BİTİNCE ANA SİTEYİ AÇ
+================================================== */
 
 introAudio.addEventListener(
     "ended",
@@ -1356,8 +1143,8 @@ introAudio.addEventListener(
 
 
                         /*
-                        Açılış bittikten sonra
-                        arka plan müziğini başlat
+                        Açılış sesi bittikten sonra
+                        ana müziği başlat
                         */
 
                         startBackgroundMusic();
@@ -1397,19 +1184,23 @@ function startBackgroundMusic(){
     ){
 
         music.play().then(
+
             () => {
 
                 musicButton.innerHTML =
                     "🔊 Müziği Kapat";
 
             }
+
         ).catch(
+
             () => {
 
                 musicButton.innerHTML =
                     "🎵 Müziği Aç";
 
             }
+
         );
 
     }
@@ -1418,7 +1209,9 @@ function startBackgroundMusic(){
 
 
 
-/* MÜZİK BUTONU */
+/* ==================================================
+   MÜZİK BUTONU
+================================================== */
 
 musicButton.addEventListener(
     "click",
@@ -1432,12 +1225,14 @@ musicButton.addEventListener(
         ){
 
             music.play().then(
+
                 () => {
 
                     musicButton.innerHTML =
                         "🔊 Müziği Kapat";
 
                 }
+
             );
 
         }else{
@@ -1512,13 +1307,9 @@ photos.forEach(
                 event.stopPropagation();
 
 
-                /* FOTOĞRAFI GÖSTER */
-
                 viewerImage.src =
                     photo.src;
 
-
-                /* FOTOĞRAFA ÖZEL SÖZ */
 
                 loveTitle.textContent =
                     photo.dataset.title;
@@ -1528,8 +1319,6 @@ photos.forEach(
                     photo.dataset.message;
 
 
-                /* EKRANI AÇ */
-
                 viewer.style.display =
                     "flex";
 
@@ -1537,8 +1326,6 @@ photos.forEach(
                 document.body.style.overflow =
                     "hidden";
 
-
-                /* KALPLER */
 
                 createHearts();
 
@@ -1558,7 +1345,6 @@ function closePhoto(){
 
     viewer.style.display =
         "none";
-
 
     document.body.style.overflow =
         "auto";
@@ -1626,19 +1412,15 @@ function createHearts(){
 
                 heart.innerHTML =
                     [
-
                         "❤",
                         "💗",
                         "💕",
                         "💖",
                         "💘"
-
                     ][
-
                         Math.floor(
                             Math.random()*5
                         )
-
                     ];
 
 
@@ -1658,7 +1440,6 @@ function createHearts(){
 
                 heart.style.setProperty(
                     "--x",
-
                     (
                         Math.random()*300-150
                     ) + "px"
